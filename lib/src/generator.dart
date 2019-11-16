@@ -64,7 +64,11 @@ String convertPubspec(String source) {
       }
     }
 
-    output.add('const List<String> authors = <String>[${authors.join(',')},];');
+    if (authors.isNotEmpty) {
+      output.add(
+        'const List<String> authors = <String>[${authors.join(',')},];',
+      );
+    }
   }
 
   return DartFormatter().format(output.join('\n\n')).toString();
