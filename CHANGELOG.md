@@ -5,6 +5,7 @@
 - Rename the package main entry point
 - Add example
 - Fix issue with empty authors list
+- Fix dependencies
 
 ## 1.0.0
 
