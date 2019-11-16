@@ -41,7 +41,7 @@ class PubspecBuilder implements Builder {
 
       final String contents = await buildStep.readAsString(inputId);
       final String source = convertPubspec(contents);
-      buildStep.writeAsString(outputId, source);
+      await buildStep.writeAsString(outputId, source);
     }
   }
 }
