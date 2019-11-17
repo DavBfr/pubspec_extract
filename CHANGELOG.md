@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+- Wrap the result in a class
+- Add more fields
+- Generic `yaml` extraction
+
 ## 1.0.3
 
 - Fix dependencies

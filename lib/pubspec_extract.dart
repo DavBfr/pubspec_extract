@@ -18,6 +18,7 @@ import 'dart:async';
 
 import 'package:build/build.dart';
 import 'package:dart_style/dart_style.dart';
+import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
 part 'src/builder.dart';
