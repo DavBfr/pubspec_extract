@@ -12,7 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:build/build.dart';
-import 'src/builder.dart';
+library pubspec_extract;
 
-Builder pubspecBuilder(BuilderOptions builderOptions) => const PubspecBuilder();
+import 'dart:async';
+
+import 'package:build/build.dart';
+import 'package:dart_style/dart_style.dart';
+import 'package:yaml/yaml.dart';
+
+part 'src/builder.dart';
+part 'src/generator.dart';

@@ -12,14 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'dart:async';
+part of pubspec_extract;
 
-import 'package:build/build.dart';
-
-import 'generator.dart';
-
-class PubspecBuilder implements Builder {
-  const PubspecBuilder();
+class _PubspecBuilder implements Builder {
+  const _PubspecBuilder();
 
   @override
   Map<String, List<String>> get buildExtensions => const <String, List<String>>{
@@ -45,3 +41,7 @@ class PubspecBuilder implements Builder {
     }
   }
 }
+
+/// Creates a builder for build_runner
+Builder pubspecBuilder(BuilderOptions builderOptions) =>
+    const _PubspecBuilder();

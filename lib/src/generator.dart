@@ -12,18 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:dart_style/dart_style.dart';
-import 'package:yaml/yaml.dart';
+part of pubspec_extract;
 
-String outputStr(String s) {
-  s = s.trim();
-  s = s.replaceAll(r'\', r'\\');
-  s = s.replaceAll('\n', r'\n');
-  s = s.replaceAll('\r', '');
-  s = s.replaceAll("'", r"\'");
-  return "'$s'";
-}
-
+/// Converts a yaml content with pubspec.yaml in mind
+/// to a dart source file
 String convertPubspec(String source) {
   final dynamic data = loadYaml(source);
   final List<String> output = <String>[];
@@ -37,23 +29,23 @@ String convertPubspec(String source) {
       switch (v.key) {
         case 'version':
           final List<String> splitted = v.value.split('+');
-          output.add('const String version = ${outputStr(splitted.first)};');
+          output.add('const String version = ${_outputStr(splitted.first)};');
           final int build = splitted.length > 1 ? int.parse(splitted[1]) : 0;
           output.add('const int build = $build;');
           break;
         case 'author':
         case 'authors':
           if (v.value is String) {
-            authors.add(outputStr(v.value));
+            authors.add(_outputStr(v.value));
             break;
           }
           for (String author in v.value) {
-            authors.add(outputStr(author));
+            authors.add(_outputStr(author));
           }
           break;
         default:
           if (v.value is String) {
-            output.add('const String ${v.key} = ${outputStr(v.value)};');
+            output.add('const String ${v.key} = ${_outputStr(v.value)};');
           } else if (v.value is int) {
             output.add('const int ${v.key} = ${v.value};');
           } else if (v.value is double) {
@@ -72,4 +64,13 @@ String convertPubspec(String source) {
   }
 
   return DartFormatter().format(output.join('\n\n')).toString();
+}
+
+String _outputStr(String s) {
+  s = s.trim();
+  s = s.replaceAll(r'\', r'\\');
+  s = s.replaceAll('\n', r'\n');
+  s = s.replaceAll('\r', '');
+  s = s.replaceAll("'", r"\'");
+  return "'$s'";
 }

@@ -24,7 +24,20 @@ format-dart: $(DART_SRC)
 clean:
 	git clean -fdx -e .vscode
 
-publish: format clean
+test:
+	pub run test
+
+publish: format analyze clean
 	pub publish -f
 
-.PHONY: format format-dart clean publish
+.dartfix:
+	pub global activate dartfix
+	touch $@
+
+fix: .dartfix
+	pub global run dartfix --overwrite .
+
+analyze:
+	dartanalyzer --fatal-infos --fatal-warnings --fatal-hints --fatal-lints -v .
+
+.PHONY: format format-dart clean publish test fix analyze
