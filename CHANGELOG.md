@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+- Fix dependencies
+
 ## 1.0.2
 
 - Add command-line tool

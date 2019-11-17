@@ -16,7 +16,7 @@ packages:
     source: hosted
     version: "0.39.1"
   args:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: args
       url: "https://pub.dartlang.org"
@@ -156,7 +156,7 @@ packages:
     source: hosted
     version: "0.3.29"
   logging:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: logging
       url: "https://pub.dartlang.org"
@@ -226,7 +226,7 @@ packages:
     source: hosted
     version: "1.0.10"
   path:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"
