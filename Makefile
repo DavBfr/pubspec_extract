@@ -34,10 +34,17 @@ publish: format analyze clean
 	pub global activate dartfix
 	touch $@
 
+.pana:
+	pub global activate pana
+	touch $@
+
 fix: .dartfix
 	pub global run dartfix --overwrite .
 
 analyze:
 	dartanalyzer --fatal-infos --fatal-warnings --fatal-hints --fatal-lints -v .
+
+pana: .pana
+	pub global run pana --no-warning --source path .
 
 .PHONY: format format-dart clean publish test fix analyze
