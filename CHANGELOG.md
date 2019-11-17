@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Add command-line tool
+
 ## 1.0.1
 
 - Rename the package main entry point
