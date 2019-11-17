@@ -67,7 +67,6 @@ String convertPubspec(String source) {
 }
 
 String _outputStr(String s) {
-  s = s.trim();
   s = s.replaceAll(r'\', r'\\');
   s = s.replaceAll('\n', r'\n');
   s = s.replaceAll('\r', '');

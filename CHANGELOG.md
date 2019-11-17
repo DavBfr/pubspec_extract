@@ -3,6 +3,7 @@
 ## 1.0.3
 
 - Fix dependencies
+- Remove trim() from string conversion
 
 ## 1.0.2
 
