@@ -45,3 +45,17 @@ or
 ```shell
 pub run pubspec_extract
 ```
+
+## Install the command-line tool globally
+
+run:
+
+```shell
+pub global activate pubspec_extract
+```
+
+the executable will be compiled and available at `$HOME/.pub-cache/bin` or `%APPDATA%\Pub\Cache\bin`. You can run it using:
+
+```shell
+pub global run pubspec_extract
+```

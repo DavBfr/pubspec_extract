@@ -4,6 +4,7 @@
 
 - Fix dependencies
 - Remove trim() from string conversion
+- Declare executable `pubspec_extract`
 
 ## 1.0.2
 
