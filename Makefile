@@ -12,8 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
 
- DART_SRC=$(shell find . -name '*.dart')
- 
+DART_SRC=$(shell find . -name '*.dart')
+
 all: format
 
 format: format-dart
@@ -38,13 +38,16 @@ publish: format analyze clean
 	pub global activate pana
 	touch $@
 
-fix: .dartfix
+fix: .dartfix $(DART_SRC)
 	pub global run dartfix --overwrite .
 
-analyze:
+analyze: $(DART_SRC)
 	dartanalyzer --fatal-infos --fatal-warnings --fatal-hints --fatal-lints -v .
 
 pana: .pana
 	pub global run pana --no-warning --source path .
 
 .PHONY: format format-dart clean publish test fix analyze
+
+lib/src/pubspec.dart: pubspec.yaml
+	pub run pubspec_extract -s $^ -d $@

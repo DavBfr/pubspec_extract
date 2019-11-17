@@ -5,6 +5,7 @@
 - Wrap the result in a class
 - Add more fields
 - Generic `yaml` extraction
+- Add help on executable
 
 ## 1.0.3
 
