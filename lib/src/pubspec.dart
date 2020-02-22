@@ -8,15 +8,15 @@ class Pubspec {
 
   static const String homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const String versionFull = '1.1.0';
+  static const String versionFull = '1.2.0';
 
-  static const String version = '1.1.0';
+  static const String version = '1.2.0';
 
-  static const String versionSmall = '1.1';
+  static const String versionSmall = '1.2';
 
   static const int versionMajor = 1;
 
-  static const int versionMinor = 1;
+  static const int versionMinor = 2;
 
   static const int versionPatch = 0;
 
@@ -58,6 +58,6 @@ class Pubspec {
   ];
 
   static const List<String> authorsEmail = <String>[
-    '<dev.nfet.net@gmail.com>',
+    'dev.nfet.net@gmail.com',
   ];
 }

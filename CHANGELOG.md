@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+- Remove < > from authors' email address
+
 ## 1.1.0
 
 - Wrap the result in a class

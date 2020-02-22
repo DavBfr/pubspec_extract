@@ -195,7 +195,7 @@ Iterable<MapEntry<String, String>> _authorsSplit(List<String> authors) sync* {
 
     yield MapEntry<String, String>(
       match.group(1)?.trim(),
-      match.group(2)?.trim(),
+      match.group(3)?.trim(),
     );
   }
 }
