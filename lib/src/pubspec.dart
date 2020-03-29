@@ -8,15 +8,15 @@ class Pubspec {
 
   static const String homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const String versionFull = '1.2.0';
+  static const String versionFull = '1.3.0';
 
-  static const String version = '1.2.0';
+  static const String version = '1.3.0';
 
-  static const String versionSmall = '1.2';
+  static const String versionSmall = '1.3';
 
   static const int versionMajor = 1;
 
-  static const int versionMinor = 2;
+  static const int versionMinor = 3;
 
   static const int versionPatch = 0;
 
