@@ -3,6 +3,7 @@
 ## 1.3.0
 
 - Fix variables with non-alpha-numeric characters
+- Add more command-line options
 
 ## 1.2.0
 

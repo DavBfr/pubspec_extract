@@ -22,11 +22,30 @@ int main(List<String> arguments) {
       defaultsTo: 'lib/pubspec.dart',
       help: 'Destination dart file',
     )
+    ..addOption(
+      'class-name',
+      abbr: 'c',
+      defaultsTo: 'Pubspec',
+      help: 'Destination class name',
+    )
     ..addFlag(
       'verbose',
       abbr: 'v',
       negatable: false,
       help: 'Verbose output',
+    )
+    ..addFlag(
+      'format',
+      abbr: 'f',
+      defaultsTo: true,
+      negatable: true,
+      help: 'Format the dart output',
+    )
+    ..addFlag(
+      'map-list',
+      abbr: 'm',
+      negatable: false,
+      help: 'Add a list of the exported variables',
     )
     ..addFlag(
       'version',
@@ -59,6 +78,9 @@ int main(List<String> arguments) {
 
   final String source = argResults['source'];
   final String destination = argResults['destination'];
+  final String className = argResults['class-name'];
+  final bool mapList = argResults['map-list'];
+  final bool format = argResults['format'];
   final bool verbose = argResults['verbose'];
 
   // Initialize logger
@@ -79,7 +101,12 @@ int main(List<String> arguments) {
   Directory(p.basename(destination));
 
   log.info('Converting $source to $destination');
-  final contents = convertPubspec(fileSource.readAsStringSync());
+  final contents = convertPubspec(
+    fileSource.readAsStringSync(),
+    format: format,
+    outputMap: mapList,
+    className: className,
+  );
   File(destination).writeAsStringSync(contents);
 
   return 0;
