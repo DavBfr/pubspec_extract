@@ -28,7 +28,7 @@ String convertPubspec(
 
   output.add('// This file is generated automatically, do not modify');
 
-  output.add('class $className {');
+  output.add('class ${_capitalize(className)} {');
 
   final List<String> authors = <String>[];
 
@@ -89,30 +89,30 @@ String convertPubspec(
           }
           break;
         default:
+          final key = _outputVar(v.key);
           if (v.value is String) {
-            output
-                .add('static const String ${v.key} = ${_outputStr(v.value)};');
-            entries.add(v.key);
+            output.add('static const String $key = ${_outputStr(v.value)};');
+            entries.add(key);
           } else if (v.value is int) {
-            output.add('static const int ${v.key} = ${v.value};');
-            entries.add(v.key);
+            output.add('static const int $key = ${v.value};');
+            entries.add(key);
           } else if (v.value is double) {
-            output.add('static const double ${v.key} = ${v.value};');
-            entries.add(v.key);
+            output.add('static const double $key = ${v.value};');
+            entries.add(key);
           } else if (v.value is bool) {
-            output.add('static const bool ${v.key} = ${v.value};');
-            entries.add(v.key);
+            output.add('static const bool $key = ${v.value};');
+            entries.add(key);
           } else if (v.value is List) {
-            output.add('static const List<dynamic> ${v.key} = <dynamic>[');
+            output.add('static const List<dynamic> $key = <dynamic>[');
             _outputList(v.value, output);
             output.add('];');
-            entries.add(v.key);
+            entries.add(key);
           } else if (v.value is Map) {
             output.add(
-                'static const Map<dynamic, dynamic> ${v.key} = <dynamic,dynamic>{');
+                'static const Map<dynamic, dynamic> $key = <dynamic,dynamic>{');
             _outputMap(v.value, output);
             output.add('};');
-            entries.add(v.key);
+            entries.add(key);
           }
       }
     }
@@ -135,8 +135,8 @@ String convertPubspec(
   }
 
   if (outputMap) {
-    output
-        .add('static const Map<String, dynamic> pubspec = <String, dynamic>{');
+    output.add(
+        'static const Map<String, dynamic> ${_uncapitalize(className)} = <String, dynamic>{');
     entries.sort();
     for (var entry in entries) {
       output.add('${_outputStr(entry)}:${entry},');
@@ -152,6 +152,34 @@ String convertPubspec(
   }
 
   return output.join('\n');
+}
+
+String _capitalize(String s) {
+  return "${s[0].toUpperCase()}${s.substring(1)}";
+}
+
+String _uncapitalize(String s) {
+  return "${s[0].toLowerCase()}${s.substring(1)}";
+}
+
+String _outputVar(String s) {
+  s = s.replaceAll(RegExp(r'[^A-Za-z0-9_]'), ' ');
+
+  final group = s.split(RegExp(r'\s+'));
+  final buffer = StringBuffer();
+
+  var first = true;
+  for (var word in group) {
+    if (first) {
+      first = false;
+      buffer.write(word.toLowerCase());
+    } else {
+      buffer.write(word.substring(0, 1).toUpperCase());
+      buffer.write(word.substring(1).toLowerCase());
+    }
+  }
+
+  return buffer.toString();
 }
 
 void _outputItem(dynamic item, List<String> output) {

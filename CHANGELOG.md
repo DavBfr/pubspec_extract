@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Fix variables with non-alpha-numeric characters
+
 ## 1.2.0
 
 - Remove < > from authors' email address
