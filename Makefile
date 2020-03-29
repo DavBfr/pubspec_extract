@@ -28,7 +28,9 @@ test:
 	pub run test
 
 publish: format analyze clean
+	test -z "$(shell git status --porcelain)"
 	pub publish -f
+	git tag $(shell grep version pubspec.yaml | sed 's/version\s*:\s*/v/g')
 
 .dartfix:
 	pub global activate dartfix
