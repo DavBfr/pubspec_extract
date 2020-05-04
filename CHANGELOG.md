@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- Ignore public_member_api_docs
+
 ## 1.3.0
 
 - Fix variables with non-alpha-numeric characters

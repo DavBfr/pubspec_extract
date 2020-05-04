@@ -27,6 +27,7 @@ String convertPubspec(
   final List<String> entries = <String>[];
 
   output.add('// This file is generated automatically, do not modify');
+  output.add('// ignore_for_file: public_member_api_docs');
 
   output.add('class ${_capitalize(className)} {');
 
