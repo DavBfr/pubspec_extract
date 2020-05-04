@@ -23,18 +23,18 @@ String convertPubspec(
   bool outputMap = false,
 }) {
   final dynamic data = loadYaml(source);
-  final List<String> output = <String>[];
-  final List<String> entries = <String>[];
+  final output = <String>[];
+  final entries = <String>[];
 
   output.add('// This file is generated automatically, do not modify');
   output.add('// ignore_for_file: public_member_api_docs');
 
   output.add('class ${_capitalize(className)} {');
 
-  final List<String> authors = <String>[];
+  final authors = <String>[];
 
   if (data is Map) {
-    for (MapEntry<dynamic, dynamic> v in data.entries) {
+    for (var v in data.entries) {
       switch (v.key) {
         case 'version':
           output
@@ -42,12 +42,12 @@ String convertPubspec(
           entries.add('versionFull');
 
           try {
-            final Version ver = Version.parse(v.value);
+            final ver = Version.parse(v.value);
 
-            final String v1 = '${ver.major}.${ver.minor}.${ver.patch}';
+            final v1 = '${ver.major}.${ver.minor}.${ver.patch}';
             output.add('static const String version = ${_outputStr(v1)};');
 
-            final String v2 = '${ver.major}.${ver.minor}';
+            final v2 = '${ver.major}.${ver.minor}';
             output.add('static const String versionSmall = ${_outputStr(v2)};');
 
             output.add('static const int versionMajor = ${ver.major};');
@@ -55,7 +55,7 @@ String convertPubspec(
             output.add('static const int versionPatch = ${ver.patch};');
             final int build = ver.build.isEmpty
                 ? 0
-                : ver.build.firstWhere((v) => v is int) ?? 0;
+                : ver.build.firstWhere((dynamic v) => v is int) ?? 0;
             output.add('static const int versionBuild = $build;');
 
             output.add('static const String versionPreRelease = ');
@@ -85,9 +85,7 @@ String convertPubspec(
             authors.add(v.value);
             break;
           }
-          for (String author in v.value) {
-            authors.add(author);
-          }
+          v.value.forEach(authors.add);
           break;
         default:
           final key = _outputVar(v.key);
@@ -140,7 +138,7 @@ String convertPubspec(
         'static const Map<String, dynamic> ${_uncapitalize(className)} = <String, dynamic>{');
     entries.sort();
     for (var entry in entries) {
-      output.add('${_outputStr(entry)}:${entry},');
+      output.add('${_outputStr(entry)}:$entry,');
     }
     output.add('};');
   }
@@ -156,11 +154,11 @@ String convertPubspec(
 }
 
 String _capitalize(String s) {
-  return "${s[0].toUpperCase()}${s.substring(1)}";
+  return '${s[0].toUpperCase()}${s.substring(1)}';
 }
 
 String _uncapitalize(String s) {
-  return "${s[0].toLowerCase()}${s.substring(1)}";
+  return '${s[0].toLowerCase()}${s.substring(1)}';
 }
 
 String _outputVar(String s) {
@@ -187,7 +185,7 @@ void _outputItem(dynamic item, List<String> output) {
   if (item is String) {
     output.add('${_outputStr(item)}');
   } else if (item is int || item is double || item is bool) {
-    output.add('${item}');
+    output.add('$item');
   } else if (item == null) {
     output.add('null');
   } else if (item is List) {
@@ -209,7 +207,7 @@ void _outputList(List<dynamic> list, List<String> output) {
 }
 
 void _outputMap(Map<dynamic, dynamic> map, List<String> output) {
-  for (MapEntry<dynamic, dynamic> item in map.entries) {
+  for (var item in map.entries) {
     _outputItem(item.key, output);
     output.add(':');
     _outputItem(item.value, output);
@@ -218,9 +216,9 @@ void _outputMap(Map<dynamic, dynamic> map, List<String> output) {
 }
 
 Iterable<MapEntry<String, String>> _authorsSplit(List<String> authors) sync* {
-  final RegExp re = RegExp(r'([^<]*)\s*(<([^>]*)>)?');
-  for (String author in authors) {
-    RegExpMatch match = re.firstMatch(author);
+  final re = RegExp(r'([^<]*)\s*(<([^>]*)>)?');
+  for (var author in authors) {
+    final match = re.firstMatch(author);
 
     yield MapEntry<String, String>(
       match.group(1)?.trim(),
@@ -230,7 +228,7 @@ Iterable<MapEntry<String, String>> _authorsSplit(List<String> authors) sync* {
 }
 
 Iterable<String> _authorsName(List<String> authors) sync* {
-  for (MapEntry<String, String> entry in _authorsSplit(authors)) {
+  for (var entry in _authorsSplit(authors)) {
     if (entry.key != null) {
       yield entry.key;
     }
@@ -238,7 +236,7 @@ Iterable<String> _authorsName(List<String> authors) sync* {
 }
 
 Iterable<String> _authorsEmail(List<String> authors) sync* {
-  for (MapEntry<String, String> entry in _authorsSplit(authors)) {
+  for (var entry in _authorsSplit(authors)) {
     if (entry.value != null) {
       yield entry.value;
     }

@@ -88,12 +88,12 @@ int main(List<String> arguments) {
   Logger.root.onRecord.listen((LogRecord rec) {
     print('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
-  final Logger log = Logger('main');
+  final log = Logger('main');
 
   log.info('Checking source file exists');
   final fileSource = File(source);
   if (!fileSource.existsSync()) {
-    log.severe('File ${source} not found');
+    log.severe('File $source not found');
     return 1;
   }
 

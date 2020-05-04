@@ -3,6 +3,7 @@
 ## 1.3.1
 
 - Ignore public_member_api_docs
+- Fix Analysis warnings
 
 ## 1.3.0
 

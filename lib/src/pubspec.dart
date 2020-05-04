@@ -1,5 +1,7 @@
 // This file is generated automatically, do not modify
 
+// ignore_for_file: public_member_api_docs
+
 class Pubspec {
   static const String name = 'pubspec_extract';
 
@@ -8,9 +10,9 @@ class Pubspec {
 
   static const String homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const String versionFull = '1.3.0';
+  static const String versionFull = '1.3.1';
 
-  static const String version = '1.3.0';
+  static const String version = '1.3.1';
 
   static const String versionSmall = '1.3';
 
@@ -18,7 +20,7 @@ class Pubspec {
 
   static const int versionMinor = 3;
 
-  static const int versionPatch = 0;
+  static const int versionPatch = 1;
 
   static const int versionBuild = 0;
 

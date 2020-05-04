@@ -25,18 +25,18 @@ class _PubspecBuilder implements Builder {
   @override
   Future<void> build(BuildStep buildStep) async {
     if (buildStep.inputId.path == r'lib/$lib$') {
-      final AssetId inputId = AssetId(
+      final inputId = AssetId(
         buildStep.inputId.package,
         'pubspec.yaml',
       );
 
-      final AssetId outputId = AssetId(
+      final outputId = AssetId(
         buildStep.inputId.package,
         'lib/pubspec.dart',
       );
 
-      final String contents = await buildStep.readAsString(inputId);
-      final String source = convertPubspec(contents);
+      final contents = await buildStep.readAsString(inputId);
+      final source = convertPubspec(contents);
       await buildStep.writeAsString(outputId, source);
     }
   }
