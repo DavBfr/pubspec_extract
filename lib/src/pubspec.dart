@@ -33,13 +33,13 @@ class Pubspec {
   };
 
   static const Map<dynamic, dynamic> dependencies = <dynamic, dynamic>{
+    'args': '^2.0.0',
     'build': '^2.0.0',
     'dart_style': '^2.0.0',
-    'yaml': '^3.1.0',
-    'args': '^2.0.0',
-    'path': '^1.8.0',
     'logging': '^1.0.0',
+    'path': '^1.8.0',
     'pub_semver': '^2.0.0',
+    'yaml': '^3.1.0',
   };
 
   static const Map<dynamic, dynamic> dev_dependencies = <dynamic, dynamic>{

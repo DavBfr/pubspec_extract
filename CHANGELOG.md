@@ -4,6 +4,7 @@
 
 - Migrate to null-safe
 - Don't declare a library
+- Sort pub dependencies
 
 ## 1.3.1
 
