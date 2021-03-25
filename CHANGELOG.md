@@ -3,6 +3,7 @@
 ## 2.0.0
 
 - Migrate to null-safe
+- Don't declare a library
 
 ## 1.3.1
 

@@ -12,14 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-library pubspec_extract;
-
-import 'dart:async';
-
-import 'package:build/build.dart';
-import 'package:dart_style/dart_style.dart';
-import 'package:pub_semver/pub_semver.dart';
-import 'package:yaml/yaml.dart';
-
-part 'src/builder.dart';
-part 'src/generator.dart';
+export 'src/builder.dart';
+export 'src/generator.dart';
+export 'src/pubspec.dart';

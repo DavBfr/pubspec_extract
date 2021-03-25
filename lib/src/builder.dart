@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-part of pubspec_extract;
+import 'package:build/build.dart';
+import 'generator.dart';
 
 class _PubspecBuilder implements Builder {
   const _PubspecBuilder();

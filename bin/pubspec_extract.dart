@@ -21,7 +21,6 @@ import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
 import 'package:pubspec_extract/pubspec_extract.dart';
-import 'package:pubspec_extract/src/pubspec.dart';
 
 int main(List<String> arguments) {
   // Parse CLI arguments

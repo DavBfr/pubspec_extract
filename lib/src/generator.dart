@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-part of pubspec_extract;
+import 'package:dart_style/dart_style.dart';
+import 'package:pub_semver/pub_semver.dart';
+import 'package:yaml/yaml.dart';
 
 /// Converts a yaml content with pubspec.yaml in mind
 /// to a dart source file
