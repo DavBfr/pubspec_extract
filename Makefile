@@ -24,6 +24,9 @@ format: format-dart
 format-dart: $(DART_SRC)
 	${DART_BIN} format --fix $^
 
+pubspec.lock: pubspec.yaml
+	${DART_BIN} pub get
+
 clean:
 	git clean -fdx -e .vscode
 
@@ -42,7 +45,7 @@ publish: format analyze clean
 fix: $(DART_SRC)
 	${DART_BIN} fix --apply
 
-analyze: $(DART_SRC)
+analyze: $(DART_SRC) pubspec.lock
 	$(DART_BIN) analyze --fatal-infos
 
 pana: .pana
