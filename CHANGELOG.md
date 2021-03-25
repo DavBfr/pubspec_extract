@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+- Migrate to null-safe
+
 ## 1.3.1
 
 - Ignore public_member_api_docs

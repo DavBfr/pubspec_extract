@@ -60,7 +60,7 @@ String convertPubspec(
 
             output.add('static const String versionPreRelease = ');
             _outputItem(
-                ver.preRelease.isEmpty ? null : ver.preRelease.first, output);
+                ver.preRelease.isEmpty ? '' : ver.preRelease.first, output);
             output.add(';');
 
             output.add('static const bool versionIsPreRelease = ');
@@ -215,22 +215,23 @@ void _outputMap(Map<dynamic, dynamic> map, List<String> output) {
   }
 }
 
-Iterable<MapEntry<String, String>> _authorsSplit(List<String> authors) sync* {
+Iterable<MapEntry<String?, String?>> _authorsSplit(List<String> authors) sync* {
   final re = RegExp(r'([^<]*)\s*(<([^>]*)>)?');
   for (var author in authors) {
     final match = re.firstMatch(author);
-
-    yield MapEntry<String, String>(
-      match.group(1)?.trim(),
-      match.group(3)?.trim(),
-    );
+    if (match != null) {
+      yield MapEntry<String?, String?>(
+        match.group(1)?.trim(),
+        match.group(3)?.trim(),
+      );
+    }
   }
 }
 
 Iterable<String> _authorsName(List<String> authors) sync* {
   for (var entry in _authorsSplit(authors)) {
     if (entry.key != null) {
-      yield entry.key;
+      yield entry.key!;
     }
   }
 }
@@ -238,7 +239,7 @@ Iterable<String> _authorsName(List<String> authors) sync* {
 Iterable<String> _authorsEmail(List<String> authors) sync* {
   for (var entry in _authorsSplit(authors)) {
     if (entry.value != null) {
-      yield entry.value;
+      yield entry.value!;
     }
   }
 }

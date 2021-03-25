@@ -12,44 +12,43 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
 
-DART_SRC=$(shell find . -name '*.dart')
+FLUTTER?=$(realpath $(dir $(realpath $(dir $(shell which flutter)))))
+FLUTTER_BIN=$(FLUTTER)/bin/flutter
+DART_BIN=$(FLUTTER)/bin/dart
+DART_SRC=$(shell find . -name '*.dart') lib/src/pubspec.dart
 
 all: format
 
 format: format-dart
 
 format-dart: $(DART_SRC)
-	dartfmt -w --fix $^
+	${DART_BIN} format --fix $^
 
 clean:
 	git clean -fdx -e .vscode
 
 test:
-	pub run test
+	${DART_BIN} run test
 
 publish: format analyze clean
 	test -z "$(shell git status --porcelain)"
-	pub publish -f
+	${DART_BIN} pub publish -f
 	git tag $(shell grep version pubspec.yaml | sed 's/version\s*:\s*/v/g')
 
-.dartfix:
-	pub global activate dartfix
-	touch $@
-
 .pana:
-	pub global activate pana
+	${DART_BIN} pub global activate pana
 	touch $@
 
-fix: .dartfix $(DART_SRC)
-	pub global run dartfix --overwrite .
+fix: $(DART_SRC)
+	${DART_BIN} fix --apply
 
 analyze: $(DART_SRC)
-	dartanalyzer --fatal-infos --fatal-warnings --fatal-hints --fatal-lints -v .
+	$(DART_BIN) analyze --fatal-infos
 
 pana: .pana
-	pub global run pana --no-warning --source path .
+	$(DART_BIN) pub global run pana --no-warning --source path .
 
 .PHONY: format format-dart clean publish test fix analyze
 
 lib/src/pubspec.dart: pubspec.yaml
-	pub run pubspec_extract -s $^ -d $@
+	$(DART_BIN) run pubspec_extract -s $^ -d $@

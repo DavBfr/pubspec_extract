@@ -10,41 +10,41 @@ class Pubspec {
 
   static const String homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const String versionFull = '1.3.1';
+  static const String versionFull = '2.0.0';
 
-  static const String version = '1.3.1';
+  static const String version = '2.0.0';
 
-  static const String versionSmall = '1.3';
+  static const String versionSmall = '2.0';
 
-  static const int versionMajor = 1;
+  static const int versionMajor = 2;
 
-  static const int versionMinor = 3;
+  static const int versionMinor = 0;
 
-  static const int versionPatch = 1;
+  static const int versionPatch = 0;
 
   static const int versionBuild = 0;
 
-  static const String versionPreRelease = null;
+  static const String versionPreRelease = '';
 
   static const bool versionIsPreRelease = false;
 
   static const Map<dynamic, dynamic> environment = <dynamic, dynamic>{
-    'sdk': '>=2.2.0 <3.0.0',
+    'sdk': '>=2.12.0-0 <3.0.0',
   };
 
   static const Map<dynamic, dynamic> dependencies = <dynamic, dynamic>{
-    'build': '^1.1.5',
-    'dart_style': '^1.2.9',
-    'yaml': '^2.1.16',
-    'args': '^1.5.0',
-    'path': '^1.6.0',
-    'logging': '^0.11.0',
-    'pub_semver': '^1.4.0',
+    'build': '^2.0.0',
+    'dart_style': '^2.0.0',
+    'yaml': '^3.1.0',
+    'args': '^2.0.0',
+    'path': '^1.8.0',
+    'logging': '^1.0.0',
+    'pub_semver': '^2.0.0',
   };
 
   static const Map<dynamic, dynamic> dev_dependencies = <dynamic, dynamic>{
-    'pedantic': '^1.8.0',
-    'test': '^1.9.0',
+    'pedantic': '^1.11.0',
+    'test': '^1.16.8',
   };
 
   static const Map<dynamic, dynamic> executables = <dynamic, dynamic>{
