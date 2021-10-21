@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Add Flutter 2.5 compatibility
+
 ## 2.0.0
 
 - Migrate to null-safe

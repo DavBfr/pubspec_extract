@@ -1,38 +1,40 @@
 // This file is generated automatically, do not modify
 
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 class Pubspec {
-  static const String name = 'pubspec_extract';
+  static final buildDate = DateTime.utc(2021, 10, 21, 17, 30, 7);
 
-  static const String description =
+  static const name = 'pubspec_extract';
+
+  static const description =
       'Extracts Dart pubspec.yaml file and generate pubspec.dart at build time';
 
-  static const String homepage = 'https://github.com/DavBfr/pubspec_extract';
+  static const homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const String versionFull = '2.0.0';
+  static const versionFull = '2.0.1';
 
-  static const String version = '2.0.0';
+  static const version = '2.0.1';
 
-  static const String versionSmall = '2.0';
+  static const versionSmall = '2.0';
 
-  static const int versionMajor = 2;
+  static const versionMajor = 2;
 
-  static const int versionMinor = 0;
+  static const versionMinor = 0;
 
-  static const int versionPatch = 0;
+  static const versionPatch = 1;
 
-  static const int versionBuild = 0;
+  static const versionBuild = 0;
 
-  static const String versionPreRelease = '';
+  static const String? versionPreRelease = '';
 
-  static const bool versionIsPreRelease = false;
+  static const versionIsPreRelease = false;
 
-  static const Map<dynamic, dynamic> environment = <dynamic, dynamic>{
+  static const environment = <dynamic, dynamic>{
     'sdk': '>=2.12.0-0 <3.0.0',
   };
 
-  static const Map<dynamic, dynamic> dependencies = <dynamic, dynamic>{
+  static const dependencies = <dynamic, dynamic>{
     'args': '^2.0.0',
     'build': '^2.0.0',
     'dart_style': '^2.0.0',
@@ -42,24 +44,24 @@ class Pubspec {
     'yaml': '^3.1.0',
   };
 
-  static const Map<dynamic, dynamic> dev_dependencies = <dynamic, dynamic>{
-    'pedantic': '^1.11.0',
+  static const dev_dependencies = <dynamic, dynamic>{
+    'flutter_lints': '^1.0.4',
     'test': '^1.16.8',
   };
 
-  static const Map<dynamic, dynamic> executables = <dynamic, dynamic>{
+  static const executables = <dynamic, dynamic>{
     'pubspec_extract': null,
   };
 
-  static const List<String> authors = <String>[
+  static const authors = <String>[
     'David PHAM-VAN <dev.nfet.net@gmail.com>',
   ];
 
-  static const List<String> authorsName = <String>[
+  static const authorsName = <String>[
     'David PHAM-VAN',
   ];
 
-  static const List<String> authorsEmail = <String>[
+  static const authorsEmail = <String>[
     'dev.nfet.net@gmail.com',
   ];
 }

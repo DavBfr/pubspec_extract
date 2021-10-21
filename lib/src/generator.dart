@@ -29,9 +29,14 @@ String convertPubspec(
   final entries = <String>[];
 
   output.add('// This file is generated automatically, do not modify');
-  output.add('// ignore_for_file: public_member_api_docs');
+  output.add(
+      '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members');
 
   output.add('class ${_capitalize(className)} {');
+
+  final now = DateTime.now().toUtc();
+  output.add(
+      'static final buildDate = DateTime.utc(${now.year}, ${now.month}, ${now.day}, ${now.hour}, ${now.minute}, ${now.second});');
 
   final authors = <String>[];
 
@@ -39,33 +44,32 @@ String convertPubspec(
     for (var v in data.entries) {
       switch (v.key) {
         case 'version':
-          output
-              .add('static const String versionFull = ${_outputStr(v.value)};');
+          output.add('static const versionFull = ${_outputStr(v.value)};');
           entries.add('versionFull');
 
           try {
             final ver = Version.parse(v.value);
 
             final v1 = '${ver.major}.${ver.minor}.${ver.patch}';
-            output.add('static const String version = ${_outputStr(v1)};');
+            output.add('static const version = ${_outputStr(v1)};');
 
             final v2 = '${ver.major}.${ver.minor}';
-            output.add('static const String versionSmall = ${_outputStr(v2)};');
+            output.add('static const versionSmall = ${_outputStr(v2)};');
 
-            output.add('static const int versionMajor = ${ver.major};');
-            output.add('static const int versionMinor = ${ver.minor};');
-            output.add('static const int versionPatch = ${ver.patch};');
+            output.add('static const versionMajor = ${ver.major};');
+            output.add('static const versionMinor = ${ver.minor};');
+            output.add('static const versionPatch = ${ver.patch};');
             final int build = ver.build.isEmpty
                 ? 0
                 : ver.build.firstWhere((dynamic v) => v is int) ?? 0;
-            output.add('static const int versionBuild = $build;');
+            output.add('static const versionBuild = $build;');
 
-            output.add('static const String versionPreRelease = ');
+            output.add('static const String? versionPreRelease = ');
             _outputItem(
                 ver.preRelease.isEmpty ? '' : ver.preRelease.first, output);
             output.add(';');
 
-            output.add('static const bool versionIsPreRelease = ');
+            output.add('static const versionIsPreRelease = ');
             _outputItem(ver.isPreRelease, output);
             output.add(';');
 
@@ -82,7 +86,9 @@ String convertPubspec(
           } catch (_) {}
           break;
         case 'author':
+        case '_author':
         case 'authors':
+        case '_authors':
           if (v.value is String) {
             authors.add(v.value);
             break;
@@ -92,25 +98,24 @@ String convertPubspec(
         default:
           final key = _outputVar(v.key);
           if (v.value is String) {
-            output.add('static const String $key = ${_outputStr(v.value)};');
+            output.add('static const $key = ${_outputStr(v.value)};');
             entries.add(key);
           } else if (v.value is int) {
-            output.add('static const int $key = ${v.value};');
+            output.add('static const $key = ${v.value};');
             entries.add(key);
           } else if (v.value is double) {
-            output.add('static const double $key = ${v.value};');
+            output.add('static const $key = ${v.value};');
             entries.add(key);
           } else if (v.value is bool) {
-            output.add('static const bool $key = ${v.value};');
+            output.add('static const $key = ${v.value};');
             entries.add(key);
           } else if (v.value is List) {
-            output.add('static const List<dynamic> $key = <dynamic>[');
+            output.add('static const $key = <dynamic>[');
             _outputList(v.value, output);
             output.add('];');
             entries.add(key);
           } else if (v.value is Map) {
-            output.add(
-                'static const Map<dynamic, dynamic> $key = <dynamic,dynamic>{');
+            output.add('static const $key = <dynamic,dynamic>{');
             _outputMap(v.value, output);
             output.add('};');
             entries.add(key);
@@ -119,15 +124,15 @@ String convertPubspec(
     }
 
     if (authors.isNotEmpty) {
-      output.add('static const List<String> authors = <String>[');
+      output.add('static const authors = <String>[');
       _outputList(authors, output);
       output.add('];');
 
-      output.add('static const List<String> authorsName = <String>[');
+      output.add('static const authorsName = <String>[');
       _outputList(_authorsName(authors).toList(), output);
       output.add('];');
 
-      output.add('static const List<String> authorsEmail = <String>[');
+      output.add('static const authorsEmail = <String>[');
       _outputList(_authorsEmail(authors).toList(), output);
       output.add('];');
 
@@ -136,8 +141,7 @@ String convertPubspec(
   }
 
   if (outputMap) {
-    output.add(
-        'static const Map<String, dynamic> ${_uncapitalize(className)} = <String, dynamic>{');
+    output.add('static const ${_uncapitalize(className)} = <String, dynamic>{');
     entries.sort();
     for (var entry in entries) {
       output.add('${_outputStr(entry)}:$entry,');
@@ -185,7 +189,7 @@ String _outputVar(String s) {
 
 void _outputItem(dynamic item, List<String> output) {
   if (item is String) {
-    output.add('${_outputStr(item)}');
+    output.add(_outputStr(item));
   } else if (item is int || item is double || item is bool) {
     output.add('$item');
   } else if (item == null) {

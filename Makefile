@@ -54,4 +54,4 @@ pana: .pana
 .PHONY: format format-dart clean publish test fix analyze
 
 lib/src/pubspec.dart: pubspec.yaml
-	$(DART_BIN) run pubspec_extract -s $^ -d $@
+	$(DART_BIN) dart bin/pubspec_extract.dart -s $^ -d $@
