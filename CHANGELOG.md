@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- Remove public API
+
 ## 2.0.1
 
 - Add Flutter 2.5 compatibility

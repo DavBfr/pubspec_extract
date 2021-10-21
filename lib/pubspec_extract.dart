@@ -12,5 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'src/generator.dart';
-export 'src/pubspec.dart';
+import 'package:pubspec_extract/src/pubspec.dart';
+
+/// Version of this library
+const version = Pubspec.versionFull;

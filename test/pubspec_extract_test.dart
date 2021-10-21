@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:pubspec_extract/pubspec_extract.dart';
+import 'package:pubspec_extract/src/generator.dart';
 import 'package:test/test.dart';
 
 void main() {
