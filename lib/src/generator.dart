@@ -64,7 +64,7 @@ String convertPubspec(
                 : ver.build.firstWhere((dynamic v) => v is int) ?? 0;
             output.add('static const versionBuild = $build;');
 
-            output.add('static const String? versionPreRelease = ');
+            output.add('static const versionPreRelease = ');
             _outputItem(
                 ver.preRelease.isEmpty ? '' : ver.preRelease.first, output);
             output.add(';');

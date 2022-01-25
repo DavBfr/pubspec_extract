@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 class Pubspec {
-  static final buildDate = DateTime.utc(2021, 10, 21, 18, 19, 52);
+  static final buildDate = DateTime.utc(2022, 1, 25, 12, 38, 5);
 
   static const name = 'pubspec_extract';
 
@@ -12,9 +12,9 @@ class Pubspec {
 
   static const homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const versionFull = '2.0.2';
+  static const versionFull = '2.0.3';
 
-  static const version = '2.0.2';
+  static const version = '2.0.3';
 
   static const versionSmall = '2.0';
 
@@ -22,11 +22,11 @@ class Pubspec {
 
   static const versionMinor = 0;
 
-  static const versionPatch = 2;
+  static const versionPatch = 3;
 
   static const versionBuild = 0;
 
-  static const String? versionPreRelease = '';
+  static const versionPreRelease = '';
 
   static const versionIsPreRelease = false;
 

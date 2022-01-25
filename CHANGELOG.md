@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+- Fix versionPreRelease type
+
 ## 2.0.2
 
 - Remove public API
