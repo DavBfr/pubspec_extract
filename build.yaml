@@ -12,11 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-builders:
-  pubspec_extract:
-    import: "package:pubspec_extract/pubspec_extract.dart"
-    builder_factories:
-      - pubspecBuilder
-    build_extensions: { "$lib$": ["pubspec.dart"] }
-    auto_apply: root_package
-    build_to: cache
+#builders:
+#  pubspec_extract:
+#    import: "package:pubspec_extract/pubspec_extract.dart"
+#    builder_factories:
+#      - pubspecBuilder
+#    build_extensions: { "$lib$": ["pubspec.dart"] }
+#    auto_apply: root_package
+#    build_to: cache
+## TODO: implement build_runner builder
