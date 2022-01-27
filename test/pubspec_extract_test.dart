@@ -18,18 +18,48 @@ import 'package:test/test.dart';
 void main() {
   test('Empty file', () {
     final result = convertPubspec('');
-    expect(result.contains('='), false);
+    expect(result.contains('buildDate ='), true);
   });
 
   test('Name works', () {
     final result = convertPubspec('name: package');
-    expect(result.contains(r"const String name = 'package';"), true);
+    expect(result.contains(r"const name = 'package';"), true);
     expect(result.contains('authors'), false);
   });
 
   test('Authors works', () {
     final result = convertPubspec('author: David');
-    expect(result.contains('const List<String> authors ='), true);
+    expect(result.contains('const authors ='), true);
     expect(result.contains(r"'David'"), true);
+  });
+
+  group('Version string', () {
+    test('Simple', () {
+      final result = convertPubspec('version: 1.2.3');
+      expect(result.contains('version = \'1.2.3\';'), true);
+      expect(result.contains('versionSmall = \'1.2\';'), true);
+      expect(result.contains('versionMajor = 1;'), true);
+      expect(result.contains('versionMinor = 2;'), true);
+      expect(result.contains('versionPatch = 3;'), true);
+      expect(result.contains('versionBuild = 0;'), true);
+      expect(result.contains('versionPreRelease = \'\';'), true);
+      expect(result.contains('versionIsPreRelease = false;'), true);
+    });
+
+    test('Too small', () {
+      expect(() => convertPubspec('version: 1.2'), throwsFormatException);
+    });
+
+    test('Complete', () {
+      final result = convertPubspec('version: 1.02.3-dev+3');
+      expect(result.contains('version = \'1.02.3\';'), true);
+      expect(result.contains('versionSmall = \'1.02\';'), true);
+      expect(result.contains('versionMajor = 1;'), true);
+      expect(result.contains('versionMinor = 2;'), true);
+      expect(result.contains('versionPatch = 3;'), true);
+      expect(result.contains('versionBuild = 3;'), true);
+      expect(result.contains('versionPreRelease = \'dev\';'), true);
+      expect(result.contains('versionIsPreRelease = true;'), true);
+    });
   });
 }

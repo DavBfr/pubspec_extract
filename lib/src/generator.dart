@@ -46,6 +46,10 @@ String convertPubspec(
     for (var v in data.entries) {
       switch (v.key) {
         case 'version':
+          if (v.value is! String) {
+            throw const FormatException('Invalid version format');
+          }
+
           output.add('static const versionFull = ${_outputStr(v.value)};');
           entries.add('versionFull');
 
