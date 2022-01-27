@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4
+
+- Remove builder
+
 ## 2.0.3
 
 - Fix versionPreRelease type
