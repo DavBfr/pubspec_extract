@@ -16,6 +16,8 @@ import 'package:dart_style/dart_style.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
+final _match = RegExp(r'^(\d+.\d+).\d+');
+
 /// Converts a yaml content with pubspec.yaml in mind
 /// to a dart source file
 String convertPubspec(
@@ -49,12 +51,16 @@ String convertPubspec(
 
           try {
             final ver = Version.parse(v.value);
+            final verStr = _match.firstMatch(v.value);
 
-            final v1 = '${ver.major}.${ver.minor}.${ver.patch}';
-            output.add('static const version = ${_outputStr(v1)};');
+            final version =
+                verStr?.group(0) ?? '${ver.major}.${ver.minor}.${ver.patch}';
+            output.add('static const version = ${_outputStr(version)};');
 
-            final v2 = '${ver.major}.${ver.minor}';
-            output.add('static const versionSmall = ${_outputStr(v2)};');
+            final versionSmall =
+                verStr?.group(1) ?? '${ver.major}.${ver.minor}';
+            output.add(
+                'static const versionSmall = ${_outputStr(versionSmall)};');
 
             output.add('static const versionMajor = ${ver.major};');
             output.add('static const versionMinor = ${ver.minor};');

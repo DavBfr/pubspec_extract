@@ -3,6 +3,7 @@
 ## 2.0.4
 
 - Remove builder
+- Improve version parsing
 
 ## 2.0.3
 
