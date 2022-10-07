@@ -18,6 +18,7 @@ import 'package:args/args.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 import 'package:pubspec_extract/src/generator.dart';
+import 'package:pubspec_extract/src/generator_options.dart';
 import 'package:pubspec_extract/src/pubspec.dart';
 
 int main(List<String> arguments) {
@@ -26,19 +27,19 @@ int main(List<String> arguments) {
     ..addOption(
       'source',
       abbr: 's',
-      defaultsTo: 'pubspec.yaml',
+      defaultsTo: GeneratorOptions.def.source,
       help: 'Source yaml file',
     )
     ..addOption(
       'destination',
       abbr: 'd',
-      defaultsTo: 'lib/pubspec.dart',
+      defaultsTo: GeneratorOptions.def.destination,
       help: 'Destination dart file',
     )
     ..addOption(
       'class-name',
       abbr: 'c',
-      defaultsTo: 'Pubspec',
+      defaultsTo: GeneratorOptions.def.className,
       help: 'Destination class name',
     )
     ..addFlag(
@@ -89,12 +90,14 @@ int main(List<String> arguments) {
     return 0;
   }
 
-  final String source = argResults['source'];
-  final String destination = argResults['destination'];
-  final String className = argResults['class-name'];
-  final bool mapList = argResults['map-list'];
-  final bool format = argResults['format'];
   final bool verbose = argResults['verbose'];
+  final options = GeneratorOptions(
+    source: argResults['source'],
+    destination: argResults['destination'],
+    className: argResults['class-name'],
+    mapList: argResults['map-list'],
+    format: argResults['format'],
+  );
 
   // Initialize logger
   Logger.root.level = verbose ? Level.ALL : Level.SEVERE;
@@ -104,23 +107,18 @@ int main(List<String> arguments) {
   final log = Logger('main');
 
   log.info('Checking source file exists');
-  final fileSource = File(source);
+  final fileSource = File(options.source);
   if (!fileSource.existsSync()) {
-    log.severe('File $source not found');
+    log.severe('File ${options.source} not found');
     return 1;
   }
 
   log.info('Checking output directory');
-  Directory(p.basename(destination));
+  Directory(p.basename(options.destination));
 
-  log.info('Converting $source to $destination');
-  final contents = convertPubspec(
-    fileSource.readAsStringSync(),
-    format: format,
-    outputMap: mapList,
-    className: className,
-  );
-  File(destination).writeAsStringSync(contents);
+  log.info('Converting ${options.source} to ${options.destination}');
+  final contents = convertPubspec(fileSource.readAsStringSync(), options);
+  File(options.destination).writeAsStringSync(contents);
 
   return 0;
 }

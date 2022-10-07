@@ -16,16 +16,14 @@ import 'package:dart_style/dart_style.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
+import 'generator_options.dart';
+import 'generator_utils.dart';
+
 final _match = RegExp(r'^(\d+.\d+).\d+');
 
 /// Converts a yaml content with pubspec.yaml in mind
 /// to a dart source file
-String convertPubspec(
-  String source, {
-  String className = 'Pubspec',
-  bool format = true,
-  bool outputMap = false,
-}) {
+String convertPubspec(String source, GeneratorOptions options) {
   final dynamic data = loadYaml(source);
   final output = <String>[];
   final entries = <String>[];
@@ -34,7 +32,7 @@ String convertPubspec(
   output.add(
       '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members');
 
-  output.add('class ${_capitalize(className)} {');
+  output.add('mixin ${capitalize(options.className)} {');
 
   final now = DateTime.now().toUtc();
   output.add(
@@ -50,7 +48,7 @@ String convertPubspec(
             throw const FormatException('Invalid version format');
           }
 
-          output.add('static const versionFull = ${_outputStr(v.value)};');
+          output.add('static const versionFull = ${outputStr(v.value)};');
           entries.add('versionFull');
 
           try {
@@ -59,12 +57,12 @@ String convertPubspec(
 
             final version =
                 verStr?.group(0) ?? '${ver.major}.${ver.minor}.${ver.patch}';
-            output.add('static const version = ${_outputStr(version)};');
+            output.add('static const version = ${outputStr(version)};');
 
             final versionSmall =
                 verStr?.group(1) ?? '${ver.major}.${ver.minor}';
-            output.add(
-                'static const versionSmall = ${_outputStr(versionSmall)};');
+            output
+                .add('static const versionSmall = ${outputStr(versionSmall)};');
 
             output.add('static const versionMajor = ${ver.major};');
             output.add('static const versionMinor = ${ver.minor};');
@@ -75,12 +73,12 @@ String convertPubspec(
             output.add('static const versionBuild = $build;');
 
             output.add('static const versionPreRelease = ');
-            _outputItem(
+            outputItem(
                 ver.preRelease.isEmpty ? '' : ver.preRelease.first, output);
             output.add(';');
 
             output.add('static const versionIsPreRelease = ');
-            _outputItem(ver.isPreRelease, output);
+            outputItem(ver.isPreRelease, output);
             output.add(';');
 
             entries.addAll([
@@ -106,9 +104,9 @@ String convertPubspec(
           v.value.forEach(authors.add);
           break;
         default:
-          final key = _outputVar(v.key);
+          final key = outputVar(v.key);
           if (v.value is String) {
-            output.add('static const $key = ${_outputStr(v.value)};');
+            output.add('static const $key = ${outputStr(v.value)};');
             entries.add(key);
           } else if (v.value is int) {
             output.add('static const $key = ${v.value};');
@@ -121,12 +119,12 @@ String convertPubspec(
             entries.add(key);
           } else if (v.value is List) {
             output.add('static const $key = <dynamic>[');
-            _outputList(v.value, output);
+            outputList(v.value, output);
             output.add('];');
             entries.add(key);
           } else if (v.value is Map) {
             output.add('static const $key = <dynamic,dynamic>{');
-            _outputMap(v.value, output);
+            outputMap(v.value, output);
             output.add('};');
             entries.add(key);
           }
@@ -135,26 +133,27 @@ String convertPubspec(
 
     if (authors.isNotEmpty) {
       output.add('static const authors = <String>[');
-      _outputList(authors, output);
+      outputList(authors, output);
       output.add('];');
 
       output.add('static const authorsName = <String>[');
-      _outputList(_authorsName(authors).toList(), output);
+      outputList(authorsName(authors).toList(), output);
       output.add('];');
 
       output.add('static const authorsEmail = <String>[');
-      _outputList(_authorsEmail(authors).toList(), output);
+      outputList(authorsEmail(authors).toList(), output);
       output.add('];');
 
       entries.addAll(['authors', 'authorsName', 'authorsEmail']);
     }
   }
 
-  if (outputMap) {
-    output.add('static const ${_uncapitalize(className)} = <String, dynamic>{');
+  if (options.mapList) {
+    output.add(
+        'static const ${unCapitalize(options.className)} = <String, dynamic>{');
     entries.sort();
     for (var entry in entries) {
-      output.add('${_outputStr(entry)}:$entry,');
+      output.add('${outputStr(entry)}:$entry,');
     }
     output.add('};');
   }
@@ -162,108 +161,9 @@ String convertPubspec(
   // End class block
   output.add('}');
 
-  if (format) {
+  if (options.format) {
     return DartFormatter().format(output.join('\n\n')).toString();
   }
 
   return output.join('\n');
-}
-
-String _capitalize(String s) {
-  return '${s[0].toUpperCase()}${s.substring(1)}';
-}
-
-String _uncapitalize(String s) {
-  return '${s[0].toLowerCase()}${s.substring(1)}';
-}
-
-String _outputVar(String s) {
-  s = s.replaceAll(RegExp(r'[^A-Za-z0-9_]'), ' ');
-
-  final group = s.split(RegExp(r'\s+'));
-  final buffer = StringBuffer();
-
-  var first = true;
-  for (var word in group) {
-    if (first) {
-      first = false;
-      buffer.write(word.toLowerCase());
-    } else {
-      buffer.write(word.substring(0, 1).toUpperCase());
-      buffer.write(word.substring(1).toLowerCase());
-    }
-  }
-
-  return buffer.toString();
-}
-
-void _outputItem(dynamic item, List<String> output) {
-  if (item is String) {
-    output.add(_outputStr(item));
-  } else if (item is int || item is double || item is bool) {
-    output.add('$item');
-  } else if (item == null) {
-    output.add('null');
-  } else if (item is List) {
-    output.add('<dynamic>[');
-    _outputList(item, output);
-    output.add(']');
-  } else if (item is Map) {
-    output.add('<dynamic, dynamic>{');
-    _outputMap(item, output);
-    output.add('}');
-  }
-}
-
-void _outputList(List<dynamic> list, List<String> output) {
-  for (dynamic item in list) {
-    _outputItem(item, output);
-    output.add(',');
-  }
-}
-
-void _outputMap(Map<dynamic, dynamic> map, List<String> output) {
-  for (var item in map.entries) {
-    _outputItem(item.key, output);
-    output.add(':');
-    _outputItem(item.value, output);
-    output.add(',');
-  }
-}
-
-Iterable<MapEntry<String?, String?>> _authorsSplit(List<String> authors) sync* {
-  final re = RegExp(r'([^<]*)\s*(<([^>]*)>)?');
-  for (var author in authors) {
-    final match = re.firstMatch(author);
-    if (match != null) {
-      yield MapEntry<String?, String?>(
-        match.group(1)?.trim(),
-        match.group(3)?.trim(),
-      );
-    }
-  }
-}
-
-Iterable<String> _authorsName(List<String> authors) sync* {
-  for (var entry in _authorsSplit(authors)) {
-    if (entry.key != null) {
-      yield entry.key!;
-    }
-  }
-}
-
-Iterable<String> _authorsEmail(List<String> authors) sync* {
-  for (var entry in _authorsSplit(authors)) {
-    if (entry.value != null) {
-      yield entry.value!;
-    }
-  }
-}
-
-String _outputStr(String s) {
-  s = s.replaceAll(r'\', r'\\');
-  s = s.replaceAll('\n', r'\n');
-  s = s.replaceAll('\r', '');
-  s = s.replaceAll("'", r"\'");
-  return "'$s'";
 }

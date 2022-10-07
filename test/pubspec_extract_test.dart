@@ -13,29 +13,30 @@
 // limitations under the License.
 
 import 'package:pubspec_extract/src/generator.dart';
+import 'package:pubspec_extract/src/generator_options.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('Empty file', () {
-    final result = convertPubspec('');
+    final result = convertPubspec('', GeneratorOptions.def);
     expect(result.contains('buildDate ='), true);
   });
 
   test('Name works', () {
-    final result = convertPubspec('name: package');
+    final result = convertPubspec('name: package', GeneratorOptions.def);
     expect(result.contains(r"const name = 'package';"), true);
     expect(result.contains('authors'), false);
   });
 
   test('Authors works', () {
-    final result = convertPubspec('author: David');
+    final result = convertPubspec('author: David', GeneratorOptions.def);
     expect(result.contains('const authors ='), true);
     expect(result.contains(r"'David'"), true);
   });
 
   group('Version string', () {
     test('Simple', () {
-      final result = convertPubspec('version: 1.2.3');
+      final result = convertPubspec('version: 1.2.3', GeneratorOptions.def);
       expect(result.contains('version = \'1.2.3\';'), true);
       expect(result.contains('versionSmall = \'1.2\';'), true);
       expect(result.contains('versionMajor = 1;'), true);
@@ -47,11 +48,13 @@ void main() {
     });
 
     test('Too small', () {
-      expect(() => convertPubspec('version: 1.2'), throwsFormatException);
+      expect(() => convertPubspec('version: 1.2', GeneratorOptions.def),
+          throwsFormatException);
     });
 
     test('Complete', () {
-      final result = convertPubspec('version: 1.02.3-dev+3');
+      final result =
+          convertPubspec('version: 1.02.3-dev+3', GeneratorOptions.def);
       expect(result.contains('version = \'1.02.3\';'), true);
       expect(result.contains('versionSmall = \'1.02\';'), true);
       expect(result.contains('versionMajor = 1;'), true);

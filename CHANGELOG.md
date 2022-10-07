@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.5
+
+- Add working build_runner target
+
 ## 2.0.4
 
 - Remove builder

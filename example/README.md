@@ -1,11 +1,11 @@
 # Example main.dart
 
 ```dart
-import 'pubspec.dart' as pubspec; // May not exist but it's okay!
+import 'pubspec.dart'; // May not exist but it's okay!
 
 void main() {
-  print(pubspec.name);
-  print(pubspec.description);
-  print(pubspec.version);
+  print(Pubspec.name);
+  print(Pubspec.description);
+  print(Pubspec.version);
 }
 ```

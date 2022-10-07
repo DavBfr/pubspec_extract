@@ -1,0 +1,7 @@
+builders:
+  pubspec_builder:
+    import: "package:pubspec_extract/builder.dart"
+    builder_factories: ["pubspecBuilder"]
+    build_extensions: { ".yaml": [".dart"] }
+    auto_apply: dependents
+    build_to: source

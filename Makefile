@@ -17,7 +17,7 @@ FLUTTER_BIN=$(FLUTTER)/bin/flutter
 DART_BIN=$(FLUTTER)/bin/dart
 DART_SRC=$(shell find . -name '*.dart') lib/src/pubspec.dart
 
-all: format
+all: format lib/src/pubspec.dart
 
 format: format-dart
 
