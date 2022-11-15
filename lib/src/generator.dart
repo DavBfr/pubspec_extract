@@ -67,9 +67,12 @@ String convertPubspec(String source, GeneratorOptions options) {
             output.add('static const versionMajor = ${ver.major};');
             output.add('static const versionMinor = ${ver.minor};');
             output.add('static const versionPatch = ${ver.patch};');
-            final int build = ver.build.isEmpty
+            final build = ver.build.isEmpty
                 ? 0
-                : ver.build.firstWhere((dynamic v) => v is int) ?? 0;
+                : ver.build.firstWhere(
+                    (dynamic v) => v is int,
+                    orElse: () => 0,
+                  ) as int;
             output.add('static const versionBuild = $build;');
 
             output.add('static const versionPreRelease = ');
