@@ -65,4 +65,9 @@ void main() {
       expect(result.contains('versionIsPreRelease = true;'), true);
     });
   });
+
+  test('With a \$', () {
+    final result = convertPubspec('name: \$value', GeneratorOptions.def);
+    expect(result.contains('name = \'\\\$value\';'), true);
+  });
 }

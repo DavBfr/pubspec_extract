@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.6
+
+- Escape dollar signs in output strings
+
 ## 2.0.5
 
 - Add working build_runner target

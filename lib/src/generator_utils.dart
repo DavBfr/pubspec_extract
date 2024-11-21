@@ -47,6 +47,7 @@ String outputStr(String s) {
   t = t.replaceAll('\n', r'\n');
   t = t.replaceAll('\r', '');
   t = t.replaceAll("'", r"\'");
+  t = t.replaceAll(r'$', r'\$');
   return "'$t'";
 }
 
