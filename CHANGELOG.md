@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.7
+
+- Fix dependencies
+
 ## 2.0.6
 
 - Escape dollar signs in output strings
