@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.8
+
+- Update dependencies
+
 ## 2.0.7
 
 - Fix dependencies
