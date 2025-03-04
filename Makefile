@@ -22,7 +22,7 @@ all: format lib/src/pubspec.dart
 format: format-dart
 
 format-dart: $(DART_SRC)
-	${DART_BIN} format --fix $^
+	${DART_BIN} format $^
 
 pubspec.lock: pubspec.yaml
 	${DART_BIN} pub get

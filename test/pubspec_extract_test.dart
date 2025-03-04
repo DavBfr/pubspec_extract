@@ -48,13 +48,17 @@ void main() {
     });
 
     test('Too small', () {
-      expect(() => convertPubspec('version: 1.2', GeneratorOptions.def),
-          throwsFormatException);
+      expect(
+        () => convertPubspec('version: 1.2', GeneratorOptions.def),
+        throwsFormatException,
+      );
     });
 
     test('Complete', () {
-      final result =
-          convertPubspec('version: 1.02.3-dev+3', GeneratorOptions.def);
+      final result = convertPubspec(
+        'version: 1.02.3-dev+3',
+        GeneratorOptions.def,
+      );
       expect(result.contains('version = \'1.02.3\';'), true);
       expect(result.contains('versionSmall = \'1.02\';'), true);
       expect(result.contains('versionMajor = 1;'), true);
