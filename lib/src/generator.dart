@@ -41,9 +41,14 @@ String convertPubspec(String source, GeneratorOptions options) {
   final authors = <String>[];
 
   if (data is Map) {
+    final extractKeyOptions = options.extractPubspecKeys;
     for (var v in data.entries) {
+      if (extractKeyOptions[v.key] == false) {
+        //Further advanced parsing for documented pubspec keys -> move to 'switch-case' below
+        continue;
+      }
       switch (v.key) {
-        case 'version':
+        case GeneratorOptions.kVersionGenOptionKey:
           if (v.value is! String) {
             throw const FormatException('Invalid version format');
           }
@@ -100,13 +105,19 @@ String convertPubspec(String source, GeneratorOptions options) {
         case '_author':
         case 'authors':
         case '_authors':
+          if (!options.extractUndocumentedKeys) {
+            continue;
+          }
           if (v.value is String) {
             authors.add(v.value);
-            break;
+            continue;
           }
           v.value.forEach(authors.add);
           break;
         default:
+          if (!extractKeyOptions.containsKey(v.key) && !options.extractUndocumentedKeys) {
+            continue;
+          }
           final key = outputVar(v.key);
           if (v.value is String) {
             output.add('static const $key = ${outputStr(v.value)};');

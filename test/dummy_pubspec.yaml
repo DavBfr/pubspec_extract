@@ -1,0 +1,51 @@
+name: dummy
+description: Dummy pubspec description
+version: 1.0.1+2
+homepage: https://dummy.site.com
+repository: https://dummy.site.com/repo
+issue_tracker: https://dummy.site.com/repo/issues
+documentation: https://dummy.site.com/doc
+funding: text
+
+publish_to: none
+
+false_secrets:
+  - /test/test_constants.dart
+
+topics:
+  - dummy
+  - topic
+
+screenshots:
+  - screenshot1.jpg
+  - screenshot2.jpg
+
+environment:
+  sdk: ">=2.12.0 <4.0.0"
+
+undocumented_anchor_ref: &undocumented_anchor_ref dummyText # YAML anchor
+
+undocumented:
+  - text1
+  - *undocumented_anchor_ref
+
+other_param: text123
+
+other_param2: *undocumented_anchor_ref
+
+dependencies:
+  http: ^1.2.2
+  crypto: ^3.0.3
+
+dependency_overrides:
+  dummy: 1.2.3+1
+
+flutter:
+  uses-material-design: true
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+executables:
+  dummy:
