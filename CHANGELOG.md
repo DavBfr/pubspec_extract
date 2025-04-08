@@ -1,4 +1,8 @@
 # Changelog
+## 2.1.0
+
+- Customized pubspec extracting (documented & undocumented top-level keys)
+- Fix export output file to not exist directory
 
 ## 2.0.8
 

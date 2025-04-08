@@ -2,7 +2,7 @@ name: pubspec_extract
 description: Extracts Dart pubspec.yaml file and generate pubspec.dart at build time
 homepage: https://github.com/DavBfr/pubspec_extract
 _author: David PHAM-VAN <dev.nfet.net@gmail.com>
-version: 2.0.7
+version: 2.1.0
 
 environment:
   sdk: ">=2.12.0 <4.0.0"
