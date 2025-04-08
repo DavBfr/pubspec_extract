@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2025, 4, 8, 14, 51, 53);
+  static final buildDate = DateTime.utc(2025, 4, 8, 15, 38, 20);
 
   static const name = 'pubspec_extract';
 
@@ -37,7 +37,7 @@ mixin Pubspec {
   static const dependencies = <dynamic, dynamic>{
     'args': '^2.0.0',
     'build': '^2.1.0',
-    'dart_style': '^2.0.0',
+    'dart_style': '^3.0.1',
     'logging': '^1.0.0',
     'path': '^1.8.0',
     'pub_semver': '^2.1.0',

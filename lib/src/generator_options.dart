@@ -13,7 +13,6 @@
 // limitations under the License.
 
 class GeneratorOptions {
-  
   const GeneratorOptions({
     this.className = 'Pubspec',
     this.format = true,
@@ -44,40 +43,58 @@ class GeneratorOptions {
 
   /// Pubspec project 'name' key
   static const kNameGenOptionKey = 'name';
+
   /// Pubspec project 'description' key
   static const kDescriptionGenOptionKey = 'description';
+
   /// Pubspec project 'version' key
   static const kVersionGenOptionKey = 'version';
+
   /// Pubspec project 'topics' key
   static const kTopicsGenOptionKey = 'topics';
+
   /// Pubspec project 'homepage' key
   static const kHomepageGenOptionKey = 'homepage';
+
   /// Pubspec project 'repository' key
   static const kRepoGenOptionKey = 'repository';
+
   /// Pubspec project 'issue_tracker' key
   static const kIssueTrackerGenOptionKey = 'issue_tracker';
+
   /// Pubspec project 'documentation' key
   static const kDocumentationGenOptionKey = 'documentation';
+
   /// Pubspec project 'publish_to' key
   static const kPublishToGenOptionKey = 'publish_to';
+
   /// Pubspec project 'funding' key
   static const kFundingGenOptionKey = 'funding';
+
   /// Pubspec project 'screenshots' key
   static const kScreenshotsGenOptionKey = 'screenshots';
+
   /// Pubspec project 'false_secrets' key
   static const kFalseSecretsGenOptionKey = 'false_secrets';
+
   /// Pubspec project 'environment' key
   static const kEnvironmentGenOptionKey = 'environment';
+
   /// Pubspec project 'dependencies' key
   static const kDependenciesGenOptionKey = 'dependencies';
+
   /// Pubspec project 'dependency_overrides' key
   static const kDependencyOverridesGenOptionKey = 'dependency_overrides';
+
   /// Pubspec project 'ignored_advisories' key
   static const kIgnoredAdvisoriesGenOptionKey = 'ignored_advisories';
+
   /// Pubspec project 'dev_dependencies' key
   static const kDevDependenciesGenOptionKey = 'dev_dependencies';
+
   /// Pubspec project 'flutter' key
   static const kFlutterGenOptionKey = 'flutter';
+
   /// Pubspec project 'executables' key
   static const kExecutablesGenOptionKey = 'executables';
 
@@ -157,7 +174,7 @@ class GeneratorOptions {
 
   /// Extract non-pubspec related keys flag
   final bool extractUndocumentedKeys;
-  
+
   /// Documented pubspec top-level key extract flags map. Details at https://dart.dev/tools/pub/pubspec
   Map<String, bool> get extractPubspecKeys {
     final res = {
@@ -231,11 +248,15 @@ class GeneratorOptions {
         extractFalseSecrets: extractFalseSecrets ?? this.extractFalseSecrets,
         extractEnvironment: extractEnvironment ?? this.extractEnvironment,
         extractDependencies: extractDependencies ?? this.extractDependencies,
-        extractDependencyOverrides: extractDependencyOverrides ?? this.extractDependencyOverrides,
-        extractIgnoredAdvisories: extractIgnoredAdvisories ?? this.extractIgnoredAdvisories,
-        extractDevDependencies: extractDevDependencies ?? this.extractDevDependencies,
+        extractDependencyOverrides:
+            extractDependencyOverrides ?? this.extractDependencyOverrides,
+        extractIgnoredAdvisories:
+            extractIgnoredAdvisories ?? this.extractIgnoredAdvisories,
+        extractDevDependencies:
+            extractDevDependencies ?? this.extractDevDependencies,
         extractFlutter: extractFlutter ?? this.extractFlutter,
         extractExecutables: extractExecutables ?? this.extractExecutables,
-        extractUndocumentedKeys: extractUndocumentedKeys ?? this.extractUndocumentedKeys,
+        extractUndocumentedKeys:
+            extractUndocumentedKeys ?? this.extractUndocumentedKeys,
       );
 }

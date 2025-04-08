@@ -30,13 +30,15 @@ String convertPubspec(String source, GeneratorOptions options) {
 
   output.add('// This file is generated automatically, do not modify');
   output.add(
-      '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members');
+    '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members',
+  );
 
   output.add('mixin ${capitalize(options.className)} {');
 
   final now = DateTime.now().toUtc();
   output.add(
-      'static final buildDate = DateTime.utc(${now.year}, ${now.month}, ${now.day}, ${now.hour}, ${now.minute}, ${now.second});');
+    'static final buildDate = DateTime.utc(${now.year}, ${now.month}, ${now.day}, ${now.hour}, ${now.minute}, ${now.second});',
+  );
 
   final authors = <String>[];
 
@@ -66,8 +68,9 @@ String convertPubspec(String source, GeneratorOptions options) {
 
             final versionSmall =
                 verStr?.group(1) ?? '${ver.major}.${ver.minor}';
-            output
-                .add('static const versionSmall = ${outputStr(versionSmall)};');
+            output.add(
+              'static const versionSmall = ${outputStr(versionSmall)};',
+            );
 
             output.add('static const versionMajor = ${ver.major};');
             output.add('static const versionMinor = ${ver.minor};');
@@ -82,7 +85,9 @@ String convertPubspec(String source, GeneratorOptions options) {
 
             output.add('static const versionPreRelease = ');
             outputItem(
-                ver.preRelease.isEmpty ? '' : ver.preRelease.first, output);
+              ver.preRelease.isEmpty ? '' : ver.preRelease.first,
+              output,
+            );
             output.add(';');
 
             output.add('static const versionIsPreRelease = ');
@@ -97,7 +102,7 @@ String convertPubspec(String source, GeneratorOptions options) {
               'versionPatch',
               'versionBuild',
               'versionPreRelease',
-              'versionIsPreRelease'
+              'versionIsPreRelease',
             ]);
           } catch (_) {}
           break;
@@ -115,7 +120,8 @@ String convertPubspec(String source, GeneratorOptions options) {
           v.value.forEach(authors.add);
           break;
         default:
-          if (!extractKeyOptions.containsKey(v.key) && !options.extractUndocumentedKeys) {
+          if (!extractKeyOptions.containsKey(v.key) &&
+              !options.extractUndocumentedKeys) {
             continue;
           }
           final key = outputVar(v.key);
@@ -164,7 +170,8 @@ String convertPubspec(String source, GeneratorOptions options) {
 
   if (options.mapList) {
     output.add(
-        'static const ${unCapitalize(options.className)} = <String, dynamic>{');
+      'static const ${unCapitalize(options.className)} = <String, dynamic>{',
+    );
     entries.sort();
     for (var entry in entries) {
       output.add('${outputStr(entry)}:$entry,');
@@ -176,7 +183,9 @@ String convertPubspec(String source, GeneratorOptions options) {
   output.add('}');
 
   if (options.format) {
-    return DartFormatter().format(output.join('\n\n')).toString();
+    return DartFormatter(
+      languageVersion: Version.none,
+    ).format(output.join('\n\n')).toString();
   }
 
   return output.join('\n');

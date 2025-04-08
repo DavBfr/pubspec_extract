@@ -27,26 +27,46 @@ Builder pubspecBuilder(BuilderOptions options) {
       source: opt['source'],
       destination: opt['destination'],
       format: opt['format'],
-      extractName: opt[generateExtractKeyArg(GeneratorOptions.kNameGenOptionKey)],//['extract_name'],
-      extractDescription: opt[generateExtractKeyArg(GeneratorOptions.kDescriptionGenOptionKey)],//opt['extract_description'],
-      extractVersion: opt[generateExtractKeyArg(GeneratorOptions.kVersionGenOptionKey)],//opt['extract_version'],
-      extractTopics: opt[generateExtractKeyArg(GeneratorOptions.kTopicsGenOptionKey)],//opt['extract_topics'],
-      extractHomepage: opt[generateExtractKeyArg(GeneratorOptions.kHomepageGenOptionKey)],//opt['extract_homepage'],
-      extractRepo: opt[generateExtractKeyArg(GeneratorOptions.kRepoGenOptionKey)],//opt['extract_repository'],
-      extractIssueTracker: opt[generateExtractKeyArg(GeneratorOptions.kIssueTrackerGenOptionKey)],//opt['extract_issue_tracker'],
-      extractDocumentation: opt[generateExtractKeyArg(GeneratorOptions.kDocumentationGenOptionKey)],//opt['extract_documentation'],
-      extractPublishTo: opt[generateExtractKeyArg(GeneratorOptions.kPublishToGenOptionKey)],//opt['extract_publish_to'],
-      extractFunding: opt[generateExtractKeyArg(GeneratorOptions.kFundingGenOptionKey)],//opt['extract_funding'],
-      extractScreenshots: opt[generateExtractKeyArg(GeneratorOptions.kScreenshotsGenOptionKey)],//opt['extract_screenshots'],
-      extractFalseSecrets: opt[generateExtractKeyArg(GeneratorOptions.kFalseSecretsGenOptionKey)],//opt['extract_false_secrets'],
-      extractEnvironment: opt[generateExtractKeyArg(GeneratorOptions.kEnvironmentGenOptionKey)],//opt['extract_environment'],
-      extractDependencies: opt[generateExtractKeyArg(GeneratorOptions.kDependenciesGenOptionKey)],//opt['extract_dependencies'],
-      extractDependencyOverrides: opt[generateExtractKeyArg(GeneratorOptions.kDependencyOverridesGenOptionKey)],//opt['extract_dependency_overrides'],
-      extractIgnoredAdvisories: opt[generateExtractKeyArg(GeneratorOptions.kIgnoredAdvisoriesGenOptionKey)],//opt['extract_ignored_advisories'],
-      extractDevDependencies: opt[generateExtractKeyArg(GeneratorOptions.kDevDependenciesGenOptionKey)],//opt['extract_dev_dependencies'],
-      extractFlutter: opt[generateExtractKeyArg(GeneratorOptions.kFlutterGenOptionKey)],//opt['extract_flutter'],
-      extractExecutables: opt[generateExtractKeyArg(GeneratorOptions.kExecutablesGenOptionKey)],//opt['extract_executables'],
-      extractUndocumentedKeys: opt[generateExtractKeyArg('undocumented_keys')],//opt['extract_other_undocumented_keys']
+      extractName: opt[generateExtractKeyArg(
+          GeneratorOptions.kNameGenOptionKey)], //['extract_name'],
+      extractDescription: opt[generateExtractKeyArg(GeneratorOptions
+          .kDescriptionGenOptionKey)], //opt['extract_description'],
+      extractVersion: opt[generateExtractKeyArg(
+          GeneratorOptions.kVersionGenOptionKey)], //opt['extract_version'],
+      extractTopics: opt[generateExtractKeyArg(
+          GeneratorOptions.kTopicsGenOptionKey)], //opt['extract_topics'],
+      extractHomepage: opt[generateExtractKeyArg(
+          GeneratorOptions.kHomepageGenOptionKey)], //opt['extract_homepage'],
+      extractRepo: opt[generateExtractKeyArg(
+          GeneratorOptions.kRepoGenOptionKey)], //opt['extract_repository'],
+      extractIssueTracker: opt[generateExtractKeyArg(GeneratorOptions
+          .kIssueTrackerGenOptionKey)], //opt['extract_issue_tracker'],
+      extractDocumentation: opt[generateExtractKeyArg(GeneratorOptions
+          .kDocumentationGenOptionKey)], //opt['extract_documentation'],
+      extractPublishTo: opt[generateExtractKeyArg(GeneratorOptions
+          .kPublishToGenOptionKey)], //opt['extract_publish_to'],
+      extractFunding: opt[generateExtractKeyArg(
+          GeneratorOptions.kFundingGenOptionKey)], //opt['extract_funding'],
+      extractScreenshots: opt[generateExtractKeyArg(GeneratorOptions
+          .kScreenshotsGenOptionKey)], //opt['extract_screenshots'],
+      extractFalseSecrets: opt[generateExtractKeyArg(GeneratorOptions
+          .kFalseSecretsGenOptionKey)], //opt['extract_false_secrets'],
+      extractEnvironment: opt[generateExtractKeyArg(GeneratorOptions
+          .kEnvironmentGenOptionKey)], //opt['extract_environment'],
+      extractDependencies: opt[generateExtractKeyArg(GeneratorOptions
+          .kDependenciesGenOptionKey)], //opt['extract_dependencies'],
+      extractDependencyOverrides: opt[generateExtractKeyArg(GeneratorOptions
+          .kDependencyOverridesGenOptionKey)], //opt['extract_dependency_overrides'],
+      extractIgnoredAdvisories: opt[generateExtractKeyArg(GeneratorOptions
+          .kIgnoredAdvisoriesGenOptionKey)], //opt['extract_ignored_advisories'],
+      extractDevDependencies: opt[generateExtractKeyArg(GeneratorOptions
+          .kDevDependenciesGenOptionKey)], //opt['extract_dev_dependencies'],
+      extractFlutter: opt[generateExtractKeyArg(
+          GeneratorOptions.kFlutterGenOptionKey)], //opt['extract_flutter'],
+      extractExecutables: opt[generateExtractKeyArg(GeneratorOptions
+          .kExecutablesGenOptionKey)], //opt['extract_executables'],
+      extractUndocumentedKeys: opt[generateExtractKeyArg(
+          'undocumented_keys')], //opt['extract_other_undocumented_keys']
     );
   }
 
