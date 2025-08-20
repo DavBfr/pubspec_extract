@@ -21,7 +21,7 @@ screenshots:
   - screenshot2.jpg
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
+  sdk: ">=3.9.0 <4.0.0"
 
 undocumented_anchor_ref: &undocumented_anchor_ref dummyText # YAML anchor
 
