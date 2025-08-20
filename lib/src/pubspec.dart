@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2025, 4, 8, 15, 38, 20);
+  static final buildDate = DateTime.utc(2025, 8, 20, 10, 27, 17);
 
   static const name = 'pubspec_extract';
 
@@ -30,13 +30,11 @@ mixin Pubspec {
 
   static const versionIsPreRelease = false;
 
-  static const environment = <dynamic, dynamic>{
-    'sdk': '>=2.12.0 <4.0.0',
-  };
+  static const environment = <dynamic, dynamic>{'sdk': '>=3.9.0 <4.0.0'};
 
   static const dependencies = <dynamic, dynamic>{
     'args': '^2.0.0',
-    'build': '^2.1.0',
+    'build': '^3.0.2',
     'dart_style': '^3.0.1',
     'logging': '^1.0.0',
     'path': '^1.8.0',
@@ -45,23 +43,15 @@ mixin Pubspec {
   };
 
   static const dev_dependencies = <dynamic, dynamic>{
-    'flutter_lints': '^5.0.0',
+    'flutter_lints': '>= 6.0.0',
     'test': '^1.16.8',
   };
 
-  static const executables = <dynamic, dynamic>{
-    'pubspec_extract': null,
-  };
+  static const executables = <dynamic, dynamic>{'pubspec_extract': null};
 
-  static const authors = <String>[
-    'David PHAM-VAN <dev.nfet.net@gmail.com>',
-  ];
+  static const authors = <String>['David PHAM-VAN <dev.nfet.net@gmail.com>'];
 
-  static const authorsName = <String>[
-    'David PHAM-VAN',
-  ];
+  static const authorsName = <String>['David PHAM-VAN'];
 
-  static const authorsEmail = <String>[
-    'dev.nfet.net@gmail.com',
-  ];
+  static const authorsEmail = <String>['dev.nfet.net@gmail.com'];
 }

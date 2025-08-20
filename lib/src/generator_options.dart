@@ -227,36 +227,35 @@ class GeneratorOptions {
     bool? extractFlutter,
     bool? extractExecutables,
     bool? extractUndocumentedKeys,
-  }) =>
-      GeneratorOptions(
-        className: className ?? this.className,
-        format: format ?? this.format,
-        mapList: mapList ?? this.mapList,
-        source: source ?? this.source,
-        destination: destination ?? this.destination,
-        extractName: extractName ?? this.extractName,
-        extractDescription: extractDescription ?? this.extractDescription,
-        extractVersion: extractVersion ?? this.extractVersion,
-        extractTopics: extractTopics ?? this.extractTopics,
-        extractHomepage: extractHomepage ?? this.extractHomepage,
-        extractRepo: extractRepo ?? this.extractRepo,
-        extractIssueTracker: extractIssueTracker ?? this.extractIssueTracker,
-        extractDocumentation: extractDocumentation ?? this.extractDocumentation,
-        extractPublishTo: extractPublishTo ?? this.extractPublishTo,
-        extractFunding: extractFunding ?? this.extractFunding,
-        extractScreenshots: extractScreenshots ?? this.extractScreenshots,
-        extractFalseSecrets: extractFalseSecrets ?? this.extractFalseSecrets,
-        extractEnvironment: extractEnvironment ?? this.extractEnvironment,
-        extractDependencies: extractDependencies ?? this.extractDependencies,
-        extractDependencyOverrides:
-            extractDependencyOverrides ?? this.extractDependencyOverrides,
-        extractIgnoredAdvisories:
-            extractIgnoredAdvisories ?? this.extractIgnoredAdvisories,
-        extractDevDependencies:
-            extractDevDependencies ?? this.extractDevDependencies,
-        extractFlutter: extractFlutter ?? this.extractFlutter,
-        extractExecutables: extractExecutables ?? this.extractExecutables,
-        extractUndocumentedKeys:
-            extractUndocumentedKeys ?? this.extractUndocumentedKeys,
-      );
+  }) => GeneratorOptions(
+    className: className ?? this.className,
+    format: format ?? this.format,
+    mapList: mapList ?? this.mapList,
+    source: source ?? this.source,
+    destination: destination ?? this.destination,
+    extractName: extractName ?? this.extractName,
+    extractDescription: extractDescription ?? this.extractDescription,
+    extractVersion: extractVersion ?? this.extractVersion,
+    extractTopics: extractTopics ?? this.extractTopics,
+    extractHomepage: extractHomepage ?? this.extractHomepage,
+    extractRepo: extractRepo ?? this.extractRepo,
+    extractIssueTracker: extractIssueTracker ?? this.extractIssueTracker,
+    extractDocumentation: extractDocumentation ?? this.extractDocumentation,
+    extractPublishTo: extractPublishTo ?? this.extractPublishTo,
+    extractFunding: extractFunding ?? this.extractFunding,
+    extractScreenshots: extractScreenshots ?? this.extractScreenshots,
+    extractFalseSecrets: extractFalseSecrets ?? this.extractFalseSecrets,
+    extractEnvironment: extractEnvironment ?? this.extractEnvironment,
+    extractDependencies: extractDependencies ?? this.extractDependencies,
+    extractDependencyOverrides:
+        extractDependencyOverrides ?? this.extractDependencyOverrides,
+    extractIgnoredAdvisories:
+        extractIgnoredAdvisories ?? this.extractIgnoredAdvisories,
+    extractDevDependencies:
+        extractDevDependencies ?? this.extractDevDependencies,
+    extractFlutter: extractFlutter ?? this.extractFlutter,
+    extractExecutables: extractExecutables ?? this.extractExecutables,
+    extractUndocumentedKeys:
+        extractUndocumentedKeys ?? this.extractUndocumentedKeys,
+  );
 }

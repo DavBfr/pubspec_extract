@@ -43,12 +43,7 @@ int main(List<String> arguments) {
       defaultsTo: GeneratorOptions.def.className,
       help: 'Destination class name',
     )
-    ..addFlag(
-      'verbose',
-      abbr: 'v',
-      negatable: false,
-      help: 'Verbose output',
-    )
+    ..addFlag('verbose', abbr: 'v', negatable: false, help: 'Verbose output')
     ..addFlag(
       'format',
       abbr: 'f',
@@ -64,133 +59,152 @@ int main(List<String> arguments) {
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kNameGenOptionKey), //'extract-name',
+        GeneratorOptions.kNameGenOptionKey,
+      ), //'extract-name',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'name' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kDescriptionGenOptionKey), //'extract-description',
+        GeneratorOptions.kDescriptionGenOptionKey,
+      ), //'extract-description',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'description' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kVersionGenOptionKey), //'extract-version',
+        GeneratorOptions.kVersionGenOptionKey,
+      ), //'extract-version',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'version' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kTopicsGenOptionKey), //'extract-topics',
+        GeneratorOptions.kTopicsGenOptionKey,
+      ), //'extract-topics',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'topics' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kHomepageGenOptionKey), //'extract-homepage',
+        GeneratorOptions.kHomepageGenOptionKey,
+      ), //'extract-homepage',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'homepage' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kRepoGenOptionKey), //'extract-repository',
+        GeneratorOptions.kRepoGenOptionKey,
+      ), //'extract-repository',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'repository' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kIssueTrackerGenOptionKey), //'extract-issue-tracker',
+      generateExtractKeyArg(
+        GeneratorOptions.kIssueTrackerGenOptionKey,
+      ), //'extract-issue-tracker',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'issue_tracker' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kDocumentationGenOptionKey), //'extract-documentation',
+      generateExtractKeyArg(
+        GeneratorOptions.kDocumentationGenOptionKey,
+      ), //'extract-documentation',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'documentation' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kPublishToGenOptionKey), //'extract-publish-to',
+        GeneratorOptions.kPublishToGenOptionKey,
+      ), //'extract-publish-to',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'publish_to' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kFundingGenOptionKey), //'extract-funding',
+        GeneratorOptions.kFundingGenOptionKey,
+      ), //'extract-funding',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'funding' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kScreenshotsGenOptionKey), //'extract-screenshots',
+        GeneratorOptions.kScreenshotsGenOptionKey,
+      ), //'extract-screenshots',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'screenshots' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kFalseSecretsGenOptionKey), //'extract-false-secrets',
+      generateExtractKeyArg(
+        GeneratorOptions.kFalseSecretsGenOptionKey,
+      ), //'extract-false-secrets',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'false_secrets' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kEnvironmentGenOptionKey), //'extract-environment',
+        GeneratorOptions.kEnvironmentGenOptionKey,
+      ), //'extract-environment',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'environment' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kDependenciesGenOptionKey), //'extract-dependencies',
+        GeneratorOptions.kDependenciesGenOptionKey,
+      ), //'extract-dependencies',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'dependencies' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kDependencyOverridesGenOptionKey), //'extract-dependency-overrides',
+      generateExtractKeyArg(
+        GeneratorOptions.kDependencyOverridesGenOptionKey,
+      ), //'extract-dependency-overrides',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'dependency_overrides' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kIgnoredAdvisoriesGenOptionKey), //'extract-ignored-advisories',
+      generateExtractKeyArg(
+        GeneratorOptions.kIgnoredAdvisoriesGenOptionKey,
+      ), //'extract-ignored-advisories',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'ignored_advisories' from pubspec",
     )
     ..addFlag(
-      generateExtractKeyArg(GeneratorOptions
-          .kDevDependenciesGenOptionKey), //'extract-dev-dependencies',
+      generateExtractKeyArg(
+        GeneratorOptions.kDevDependenciesGenOptionKey,
+      ), //'extract-dev-dependencies',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'dev_dependencies' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kFlutterGenOptionKey), //'extract-flutter',
+        GeneratorOptions.kFlutterGenOptionKey,
+      ), //'extract-flutter',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'flutter' from pubspec",
     )
     ..addFlag(
       generateExtractKeyArg(
-          GeneratorOptions.kExecutablesGenOptionKey), //'extract-executables',
+        GeneratorOptions.kExecutablesGenOptionKey,
+      ), //'extract-executables',
       defaultsTo: true,
       negatable: true,
       help: "Extract top-level 'executables' from pubspec",
@@ -237,46 +251,86 @@ int main(List<String> arguments) {
     className: argResults['class-name'],
     mapList: argResults['map-list'],
     format: argResults['format'],
-    extractName: argResults[generateExtractKeyArg(
-        GeneratorOptions.kNameGenOptionKey)], //['extract_name'],
-    extractDescription: argResults[generateExtractKeyArg(GeneratorOptions
-        .kDescriptionGenOptionKey)], //argResults['extract_description'],
-    extractVersion: argResults[generateExtractKeyArg(GeneratorOptions
-        .kVersionGenOptionKey)], //argResults['extract_version'],
-    extractTopics: argResults[generateExtractKeyArg(
-        GeneratorOptions.kTopicsGenOptionKey)], //argResults['extract_topics'],
-    extractHomepage: argResults[generateExtractKeyArg(GeneratorOptions
-        .kHomepageGenOptionKey)], //argResults['extract_homepage'],
-    extractRepo: argResults[generateExtractKeyArg(GeneratorOptions
-        .kRepoGenOptionKey)], //argResults['extract_repository'],
-    extractIssueTracker: argResults[generateExtractKeyArg(GeneratorOptions
-        .kIssueTrackerGenOptionKey)], //argResults['extract_issue_tracker'],
-    extractDocumentation: argResults[generateExtractKeyArg(GeneratorOptions
-        .kDocumentationGenOptionKey)], //argResults['extract_documentation'],
-    extractPublishTo: argResults[generateExtractKeyArg(GeneratorOptions
-        .kPublishToGenOptionKey)], //argResults['extract_publish_to'],
-    extractFunding: argResults[generateExtractKeyArg(GeneratorOptions
-        .kFundingGenOptionKey)], //argResults['extract_funding'],
-    extractScreenshots: argResults[generateExtractKeyArg(GeneratorOptions
-        .kScreenshotsGenOptionKey)], //argResults['extract_screenshots'],
-    extractFalseSecrets: argResults[generateExtractKeyArg(GeneratorOptions
-        .kFalseSecretsGenOptionKey)], //argResults['extract_false_secrets'],
-    extractEnvironment: argResults[generateExtractKeyArg(GeneratorOptions
-        .kEnvironmentGenOptionKey)], //argResults['extract_environment'],
-    extractDependencies: argResults[generateExtractKeyArg(GeneratorOptions
-        .kDependenciesGenOptionKey)], //argResults['extract_dependencies'],
-    extractDependencyOverrides: argResults[generateExtractKeyArg(GeneratorOptions
-        .kDependencyOverridesGenOptionKey)], //argResults['extract_dependency_overrides'],
-    extractIgnoredAdvisories: argResults[generateExtractKeyArg(GeneratorOptions
-        .kIgnoredAdvisoriesGenOptionKey)], //argResults['extract_ignored_advisories'],
-    extractDevDependencies: argResults[generateExtractKeyArg(GeneratorOptions
-        .kDevDependenciesGenOptionKey)], //argResults['extract_dev_dependencies'],
-    extractFlutter: argResults[generateExtractKeyArg(GeneratorOptions
-        .kFlutterGenOptionKey)], //argResults['extract_flutter'],
-    extractExecutables: argResults[generateExtractKeyArg(GeneratorOptions
-        .kExecutablesGenOptionKey)], //argResults['extract_executables'],
-    extractUndocumentedKeys: argResults[generateExtractKeyArg(
-        'undocumented_keys')], //argResults['extract_other_undocumented_keys']
+    extractName:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kNameGenOptionKey,
+        )], //['extract_name'],
+    extractDescription:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kDescriptionGenOptionKey,
+        )], //argResults['extract_description'],
+    extractVersion:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kVersionGenOptionKey,
+        )], //argResults['extract_version'],
+    extractTopics:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kTopicsGenOptionKey,
+        )], //argResults['extract_topics'],
+    extractHomepage:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kHomepageGenOptionKey,
+        )], //argResults['extract_homepage'],
+    extractRepo:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kRepoGenOptionKey,
+        )], //argResults['extract_repository'],
+    extractIssueTracker:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kIssueTrackerGenOptionKey,
+        )], //argResults['extract_issue_tracker'],
+    extractDocumentation:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kDocumentationGenOptionKey,
+        )], //argResults['extract_documentation'],
+    extractPublishTo:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kPublishToGenOptionKey,
+        )], //argResults['extract_publish_to'],
+    extractFunding:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kFundingGenOptionKey,
+        )], //argResults['extract_funding'],
+    extractScreenshots:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kScreenshotsGenOptionKey,
+        )], //argResults['extract_screenshots'],
+    extractFalseSecrets:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kFalseSecretsGenOptionKey,
+        )], //argResults['extract_false_secrets'],
+    extractEnvironment:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kEnvironmentGenOptionKey,
+        )], //argResults['extract_environment'],
+    extractDependencies:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kDependenciesGenOptionKey,
+        )], //argResults['extract_dependencies'],
+    extractDependencyOverrides:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kDependencyOverridesGenOptionKey,
+        )], //argResults['extract_dependency_overrides'],
+    extractIgnoredAdvisories:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kIgnoredAdvisoriesGenOptionKey,
+        )], //argResults['extract_ignored_advisories'],
+    extractDevDependencies:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kDevDependenciesGenOptionKey,
+        )], //argResults['extract_dev_dependencies'],
+    extractFlutter:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kFlutterGenOptionKey,
+        )], //argResults['extract_flutter'],
+    extractExecutables:
+        argResults[generateExtractKeyArg(
+          GeneratorOptions.kExecutablesGenOptionKey,
+        )], //argResults['extract_executables'],
+    extractUndocumentedKeys:
+        argResults[generateExtractKeyArg(
+          'undocumented_keys',
+        )], //argResults['extract_other_undocumented_keys']
   );
 
   // Initialize logger
