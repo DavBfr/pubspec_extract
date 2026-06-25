@@ -39,6 +39,7 @@ class GeneratorOptions {
     this.extractFlutter = true,
     this.extractExecutables = true,
     this.extractUndocumentedKeys = true,
+    this.includeBuildDate = true,
   });
 
   /// Pubspec project 'name' key
@@ -175,6 +176,9 @@ class GeneratorOptions {
   /// Extract non-pubspec related keys flag
   final bool extractUndocumentedKeys;
 
+  /// Include the buildDate field in generated output
+  final bool includeBuildDate;
+
   /// Documented pubspec top-level key extract flags map. Details at https://dart.dev/tools/pub/pubspec
   Map<String, bool> get extractPubspecKeys {
     final res = {
@@ -227,6 +231,7 @@ class GeneratorOptions {
     bool? extractFlutter,
     bool? extractExecutables,
     bool? extractUndocumentedKeys,
+    bool? includeBuildDate,
   }) => GeneratorOptions(
     className: className ?? this.className,
     format: format ?? this.format,
@@ -257,5 +262,6 @@ class GeneratorOptions {
     extractExecutables: extractExecutables ?? this.extractExecutables,
     extractUndocumentedKeys:
         extractUndocumentedKeys ?? this.extractUndocumentedKeys,
+    includeBuildDate: includeBuildDate ?? this.includeBuildDate,
   );
 }

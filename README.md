@@ -63,6 +63,7 @@ dart pub global run pubspec_extract -s pubspec.yaml  -d lib/pubspec.dart --map-l
 | [no-]extract-flutter              |      | Extract top-level 'flutter' from pubspec. Default - true               |
 | [no-]extract-executables          |      | Extract top-level 'executables' from pubspec. Default - true           |
 | [no-]extract-undocumented-keys    |      | Extract other undocumented top-level keys from pubspec. Default - true |
+| [no-]include-build-date           |      | Include the buildDate field in generated output. Default - true       |
 | version                           |      | Extractor version                                                      |
 | verbose                           |  v   | Verbose output                                                         |
 | help                              |  h   | Show usage info                                                        |
@@ -90,6 +91,7 @@ pubspec_extract:
   destination: lib/pubspec.dart
   format: true
   map_list: false
+  include-build-date: true
   extract-name: true
   extract-description: true
   extract-version: true

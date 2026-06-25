@@ -74,4 +74,29 @@ void main() {
     final result = convertPubspec('name: \$value', GeneratorOptions.def);
     expect(result.contains('name = \'\\\$value\';'), true);
   });
+
+  group('includeBuildDate option', () {
+    test('Default behavior generates buildDate', () {
+      final result = convertPubspec('name: test', GeneratorOptions.def);
+      expect(result.contains('buildDate'), true);
+    });
+
+    test('includeBuildDate true generates buildDate', () {
+      final options = GeneratorOptions.def.copyWith(includeBuildDate: true);
+      final result = convertPubspec('name: test', options);
+      expect(result.contains('buildDate'), true);
+    });
+
+    test('includeBuildDate false omits buildDate', () {
+      final options = GeneratorOptions.def.copyWith(includeBuildDate: false);
+      final result = convertPubspec('name: test', options);
+      expect(result.contains('buildDate'), false);
+    });
+
+    test('includeBuildDate false with empty file omits buildDate', () {
+      final options = GeneratorOptions.def.copyWith(includeBuildDate: false);
+      final result = convertPubspec('', options);
+      expect(result.contains('buildDate'), false);
+    });
+  });
 }

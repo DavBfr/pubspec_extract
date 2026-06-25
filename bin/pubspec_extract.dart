@@ -218,6 +218,12 @@ int main(List<String> arguments) {
       help: 'Extract undocumented top-level keys from pubspec',
     )
     ..addFlag(
+      'include-build-date',
+      defaultsTo: true,
+      negatable: true,
+      help: 'Include the buildDate field in generated output',
+    )
+    ..addFlag(
       'version',
       negatable: false,
       help: 'Print the ${Pubspec.name} version information',
@@ -333,6 +339,7 @@ int main(List<String> arguments) {
         argResults[generateExtractKeyArg(
           'undocumented_keys',
         )], //argResults['extract_other_undocumented_keys']
+    includeBuildDate: argResults['include-build-date'],
   );
 
   // Initialize logger
