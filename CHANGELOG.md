@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0
+
+- Add include-build-date option
+
 ## 2.1.1
 
 - Update Dart SDK version requirement to 3.8.0
