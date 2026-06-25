@@ -35,10 +35,12 @@ String convertPubspec(String source, GeneratorOptions options) {
 
   output.add('mixin ${capitalize(options.className)} {');
 
-  final now = DateTime.now().toUtc();
-  output.add(
-    'static final buildDate = DateTime.utc(${now.year}, ${now.month}, ${now.day}, ${now.hour}, ${now.minute}, ${now.second});',
-  );
+  if (options.includeBuildDate) {
+    final now = DateTime.now().toUtc();
+    output.add(
+      'static final buildDate = DateTime.utc(${now.year}, ${now.month}, ${now.day}, ${now.hour}, ${now.minute}, ${now.second});',
+    );
+  }
 
   final authors = <String>[];
 

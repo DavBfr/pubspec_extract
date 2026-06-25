@@ -107,6 +107,7 @@ Builder pubspecBuilder(BuilderOptions options) {
           opt[generateExtractKeyArg(
             'undocumented_keys',
           )], //opt['extract_other_undocumented_keys']
+      includeBuildDate: opt['include-build-date'],
     );
   }
 
