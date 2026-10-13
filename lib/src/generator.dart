@@ -30,7 +30,7 @@ String convertPubspec(String source, GeneratorOptions options) {
 
   output.add('// This file is generated automatically, do not modify');
   output.add(
-    '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members',
+    '// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members, avoid_redundant_argument_values',
   );
 
   output.add('mixin ${capitalize(options.className)} {');
