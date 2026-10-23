@@ -183,9 +183,9 @@ String convertPubspec(String source, GeneratorOptions options) {
   output.add('}');
 
   if (options.format) {
-    return DartFormatter(
-      languageVersion: Version.none,
-    ).format(output.join('\n\n')).toString();
+    return DartFormatter(languageVersion: Version.none)
+        .format(output.join('\n\n'))
+        .toString();
   }
 
   return output.join('\n');

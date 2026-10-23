@@ -8,9 +8,8 @@ void main() {
 
     setUp(() {
       tempDir = Directory.systemTemp.createTempSync('pubspec_extract_cli_');
-      File(
-        '${tempDir.path}/pubspec.yaml',
-      ).writeAsStringSync('name: cli_test\nversion: 1.0.0\n');
+      File('${tempDir.path}/pubspec.yaml')
+          .writeAsStringSync('name: cli_test\nversion: 1.0.0\n');
       Directory('${tempDir.path}/lib').createSync();
     });
 
@@ -28,9 +27,8 @@ void main() {
         '${tempDir.path}/lib/pubspec.dart',
       ]);
       expect(result.exitCode, 0, reason: 'stderr: ${result.stderr}');
-      final output = File(
-        '${tempDir.path}/lib/pubspec.dart',
-      ).readAsStringSync();
+      final output = File('${tempDir.path}/lib/pubspec.dart')
+          .readAsStringSync();
       expect(output.contains('buildDate'), true);
     });
 
@@ -45,9 +43,8 @@ void main() {
         '--include-build-date',
       ]);
       expect(result.exitCode, 0, reason: 'stderr: ${result.stderr}');
-      final output = File(
-        '${tempDir.path}/lib/pubspec.dart',
-      ).readAsStringSync();
+      final output = File('${tempDir.path}/lib/pubspec.dart')
+          .readAsStringSync();
       expect(output.contains('buildDate'), true);
     });
 
@@ -62,9 +59,8 @@ void main() {
         '--no-include-build-date',
       ]);
       expect(result.exitCode, 0, reason: 'stderr: ${result.stderr}');
-      final output = File(
-        '${tempDir.path}/lib/pubspec.dart',
-      ).readAsStringSync();
+      final output = File('${tempDir.path}/lib/pubspec.dart')
+          .readAsStringSync();
       expect(output.contains('buildDate'), false);
     });
   });
