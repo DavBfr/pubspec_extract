@@ -3,6 +3,7 @@
 ## 2.2.1
 
 - fix: include avoid_redundant_argument_values in generated file
+- Update dependencies
 
 ## 2.2.0
 
