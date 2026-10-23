@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.1
+
+- fix: include avoid_redundant_argument_values in generated file
+
 ## 2.2.0
 
 - Add include-build-date option
