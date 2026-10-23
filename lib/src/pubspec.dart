@@ -1,9 +1,9 @@
 // This file is generated automatically, do not modify
 
-// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
+// ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members, avoid_redundant_argument_values
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 6, 25, 19, 29, 32);
+  static final buildDate = DateTime.utc(2026, 10, 23, 10, 7, 59);
 
   static const name = 'pubspec_extract';
 
@@ -12,9 +12,9 @@ mixin Pubspec {
 
   static const homepage = 'https://github.com/DavBfr/pubspec_extract';
 
-  static const versionFull = '2.2.0';
+  static const versionFull = '2.2.1';
 
-  static const version = '2.2.0';
+  static const version = '2.2.1';
 
   static const versionSmall = '2.2';
 
@@ -22,7 +22,7 @@ mixin Pubspec {
 
   static const versionMinor = 2;
 
-  static const versionPatch = 0;
+  static const versionPatch = 1;
 
   static const versionBuild = 0;
 
@@ -34,7 +34,7 @@ mixin Pubspec {
 
   static const dependencies = <dynamic, dynamic>{
     'args': '^2.0.0',
-    'build': '>=3.0.2 <5.0.0',
+    'build': '>=3.0.2 <6.0.0',
     'dart_style': '^3.0.1',
     'logging': '^1.0.0',
     'path': '^1.8.0',
